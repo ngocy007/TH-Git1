@@ -1,5 +1,5 @@
 # TH-Git1
-## Nhóm 88
+## Nhóm NT88
 ### DANH SÁCH THÀNH VIÊN
 | Tên | Chức Vụ | Avata |
 | ------ | ------ | ------ |

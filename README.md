@@ -8,3 +8,5 @@
 | Phạm Ân Chí | Thành Viên | <img src="#" width="50">
 | Cao Hào Kiệt | Thành Viên | <img src="#" width="50">
 | Huỳnh Xuân Đạt | Thành Viên | <img src="https://avatars.githubusercontent.com/u/41006973?v=4" width="50">
+#Lưu ý nhớ bấm
+### php artisan key:generate

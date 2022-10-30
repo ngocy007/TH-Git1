@@ -20,9 +20,9 @@ return new class extends Migration
             $table->string('HoNguoiDung',30);
             $table->string('TenNguoiDung',30);
             $table->string('NickName',30);
-            $table->string('AnhDaiDien',50);
+            $table->string('AnhDaiDien');
             $table->string('Email',50)->unique();
-            $table->string('SDT',11);
+            $table->string('SDT',20);
             $table->foreignId('MaQuyen')->constrained('Quyen')->onDelete('cascade');
             $table->timestamps();
         });

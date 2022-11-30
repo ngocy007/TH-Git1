@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('TheoDoi', function (Blueprint $table) {
             $table->id();
             $table->foreignId('MaTruyen')->constrained('Truyen')->onDelete('cascade');
-            $table->foreignId('MaNguoiDung')->constrained('NguoiDung')->onDelete('cascade');
+            $table->foreignId('MaNguoiDung')->constrained('users')->onDelete('cascade');
             $table->timestamps();
         });
     }

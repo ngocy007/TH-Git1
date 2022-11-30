@@ -1,14 +1,12 @@
 <?php
 
 
+use App\Http\Controllers\Dat\HomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
-
-
-
 
 /*
 |--------------------------------------------------------------------------
@@ -21,17 +19,10 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
-    ]);
-});
-Route::get('/home', function () {
-    return view('home');
-});
+
+Route::get('/', [HomeController::class, 'index']);
+
+
 
 Route::middleware([
     'auth:sanctum',
@@ -41,8 +32,8 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return Inertia::render('Dashboard');
     })->name('dashboard');
-
 });
+
 
 // can thiet cho verify email
 Route::get('/email/verify', function () {
@@ -61,4 +52,3 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
-//

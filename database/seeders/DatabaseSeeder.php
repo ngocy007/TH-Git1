@@ -7,11 +7,12 @@ use App\Models\BinhLuan;
 use App\Models\Chuong;
 use App\Models\CT_Loai;
 use App\Models\LichSu;
-use App\Models\NguoiDung;
 use App\Models\Quyen;
 use App\Models\TheLoai;
 use App\Models\TheoDoi;
 use App\Models\Truyen;
+
+use App\Models\User;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
@@ -39,7 +40,7 @@ class DatabaseSeeder extends Seeder
             'TenLoai' => 'trang buc'
         ]);
 
-        NguoiDung::factory(100)->create();
+        User::factory(1)->definition();
         Truyen::factory(100)->create();
         LichSu::factory(100)->create();
         DB::table('Chuong')->insert([

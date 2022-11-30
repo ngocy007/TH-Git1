@@ -4,6 +4,7 @@ namespace Database\Factories;
 
 use App\Models\NguoiDung;
 use App\Models\Truyen;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -19,7 +20,7 @@ class LichSuFactory extends Factory
     public function definition():array
     {
         return [
-            'MaNguoiDung' => NguoiDung::query()->inRandomOrder()->value('id'),
+            'MaNguoiDung' => User::query()->inRandomOrder()->value('id'),
             'MaTruyen' => Truyen::query()->inRandomOrder()->value('id'),
         ];
     }

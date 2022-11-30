@@ -40,7 +40,8 @@ class DatabaseSeeder extends Seeder
             'TenLoai' => 'trang buc'
         ]);
 
-        User::factory(1)->definition();
+        User::factory(30)->create();
+
         Truyen::factory(100)->create();
         LichSu::factory(100)->create();
         DB::table('Chuong')->insert([

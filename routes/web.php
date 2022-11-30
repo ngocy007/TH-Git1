@@ -7,6 +7,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\anchi\TruyenController;
+use App\Http\Controllers\anchi\ChuongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +20,22 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
+//Pham An Chi
+Route::get('anchi-truyen', [TruyenController::class, 'index']);
+Route::get('anchi-truyen/create', [TruyenController::class, 'create']);
+Route::post('anchi-truyen/store', [TruyenController::class, 'store']);
+Route::get('anchi-truyen/show/{id}', [TruyenController::class, 'show']);
+Route::get('anchi-truyen/edit/{id}', [TruyenController::class, 'edit']);
+Route::put('anchi-truyen/update/{id}', [TruyenController::class, 'update']);
+Route::delete('anchi-truyen/destroy/{id}', [TruyenController::class, 'destroy']);
+
+Route::get('/chuong/{id}', [ChuongController::class, 'index']);
+Route::get('/chuong/create/{id}', [ChuongController::class, 'create']);
+Route::post('/chuong/store/{id}', [ChuongController::class, 'store']);
+
+
 
 Route::get('/', [HomeController::class, 'index']);
 
@@ -31,6 +49,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
 
 
 // can thiet cho verify email

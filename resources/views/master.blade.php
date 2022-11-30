@@ -9,6 +9,7 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     @include('layout.boot5css')
+    @stack('scripts')
 </head>
 
 <body>
@@ -19,8 +20,7 @@
 
 <div class="wrapper">
     <div class="container bg-gray">
-    <h2>content here</h2>
-
+        @yield('content')
     </div>
 </div>
 @include('layout.footer')

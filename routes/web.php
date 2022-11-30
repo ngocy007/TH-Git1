@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\quyenController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+
+//code group lai ntn ok
+Route::group(['prefix' => 'admin','as' => 'quyen'],
+static function()  {
+   Route::get('/', [quyenController::class,'index']) ;
+}
+);
+Route::get('/', static fn()=>'day la trang chu');

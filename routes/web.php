@@ -1,5 +1,7 @@
 <?php
 
+
+use App\Http\Controllers\Dat\HomeController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -19,15 +21,6 @@ use App\Http\Controllers\anchi\ChuongController;
 |
 */
 
-// Route::get('/', function () {
-
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
 
 //Pham An Chi
 Route::get('anchi-truyen', [TruyenController::class, 'index']);
@@ -43,16 +36,21 @@ Route::get('/chuong/create/{id}', [ChuongController::class, 'create']);
 Route::post('/chuong/store/{id}', [ChuongController::class, 'store']);
 
 
-// Route::middleware([
-//     'auth:sanctum',
-//     config('jetstream.auth_session'),
-//     'verified',
-// ])->group(function () {
-//     Route::get('/dashboard', function () {
-//         return Inertia::render('Dashboard');
-//     })->name('dashboard');
 
-// });
+Route::get('/', [HomeController::class, 'index']);
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return Inertia::render('Dashboard');
+    })->name('dashboard');
+});
+
+
 
 // can thiet cho verify email
 Route::get('/email/verify', function () {
@@ -70,3 +68,4 @@ Route::post('/email/verification-notification', function (Request $request) {
 
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
+

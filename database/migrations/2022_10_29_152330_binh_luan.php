@@ -23,7 +23,7 @@ return new class extends Migration
                 ->constrained('Truyen')
                 ->onDelete('cascade');
             $table->foreignId('MaNguoiDung')
-                ->constrained('NguoiDung')
+                ->constrained('users')
                 ->onDelete('cascade');
         });
     }

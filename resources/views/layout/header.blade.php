@@ -49,6 +49,48 @@
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="{{route('register')}}">Đăng ký</a>
                     </li>
+{{--                    editing--}}
+                    <li class="dropdown py-3">
+                        <a role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" class="d-flex align-items-center text-body px-3 py-2" style="cursor: pointer;">
+                            <div class="nh-avatar nh-avatar--24 mr-2">
+                                <img data-src="https://static.cdnno.com/user/default/50.jpg" src="https://static.cdnno.com/user/default/50.jpg" lazy="loaded"></div>
+                            griTr84972
+                        </a>
+                        <div aria-labelledby="dropdown-profile" class="dropdown-menu dropdown-menu-right dropdown-menu--profile px-4 rounded-0">
+                            <div class="media mb-4">
+                                <div class="nh-avatar nh-avatar--45 mr-3">
+                                    <img data-src="https://static.cdnno.com/user/default/50.jpg" src="https://static.cdnno.com/user/default/50.jpg" lazy="loaded">
+                                </div>
+                                <div class="media-body">
+                                    <div class="font-weight-semibold mb-1">griTr84972</div>
+                                    <ul class="list-unstyled d-flex flex-wrap">
+                                        <li class="d-flex align-items-center mr-4">
+                                            <i class="svg-icon icon-flower mr-2"></i>
+                                            <a href="javascript:void(0)">0</a>
+                                        </li>
+                                        <li class="d-flex align-items-center">
+                                            <i class="svg-icon icon-candy text-primary mr-2"></i>
+                                            <a href="javascript:void(0)">0</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <ul class="list-unstyled m-0">
+                                <li class="mt-2">
+                                    <a href="/tai-khoan" class="d-block py-2">
+                                        Hồ sơ
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="javascript:void(0)" class="d-block py-2">
+                                        Đăng xuất
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+
+                    {{--                    end edit--}}
                 @endauth
 
 

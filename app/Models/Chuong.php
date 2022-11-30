@@ -9,4 +9,11 @@ class Chuong extends Model
 {
     protected $table = 'Chuong';
     use HasFactory;
+
+    protected $fillable = [
+        'MaTruyen',
+        'SoChuong',
+        'TenChuong',
+        'NoiDung'
+    ];
 }

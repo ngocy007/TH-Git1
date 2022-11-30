@@ -1,8 +1,11 @@
 <?php
 
-use App\Http\Controllers\quyenController;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Http\Request;
+
+use App\Http\Controllers\quyenController;
+
+use Illuminate\Support\Facades\Route;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,10 +20,6 @@ use Illuminate\Support\Facades\Route;
 
 
 Route::get('/', function () {
-    return view('index');
-});
-
-Route::get('/test', function () {
     return view('master');
 });
 

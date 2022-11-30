@@ -25,7 +25,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreignId('MaNguoiDung')
-                ->Constrained('NguoiDung');
+                ->Constrained('users');
         });
     }
 

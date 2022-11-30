@@ -15,10 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-//code group lai ntn ok
-Route::group(['prefix' => 'admin','as' => 'quyen'],
-static function()  {
-   Route::get('/', [quyenController::class,'index']) ;
-}
-);
-Route::get('/', static fn()=>'day la trang chu');
+
+Route::get('/', function () {
+    return view('index');
+});
+
+Route::get('/test', function () {
+    return view('master');
+});
+

@@ -1,27 +1,131 @@
-@extends('layout_themtruyen.layout_create_truyen')
+@extends('master')
 @section('content')
-<a href="truyen/create">Them truyen</a>
-<table>
-    <tr>
-        <th>TenTruyen</th>
-        <th>AnhDaiDien</th>
-        <th>MaNguoiDung</th>
-    </tr>
-    @foreach ($truyens as $item)
-            <tr>
-                <td><a href="chuong/{{ $item->id }}">{{ $item->TenTruyen }}</a></td>
-                <td>{{ $item->AnhDaiDien }}</td>
-                <td>{{ $item->MaNguoiDung }}</td>
+@push('scripts')
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{{asset("css_phamanchi/truyen_index.css")}}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+@endpush
 
-                <td><a href="voucher/edit/{{ $item->id }}">Edit</a></td>
-                <td>
-                    <form action="voucher/destroy/{{ $item->id }}" method="post">
-                        @csrf
-                        @method('delete')
-                        <button type="submit">Xoa</button>
-                    </form>
-                </td>
-            </tr>
-    @endforeach
-</table>
+<button type="button" class="btn btn-outline-primary waves-effect">
+    <a id="themtruyen" href="anchi-truyen/create">
+        <span id="icon-create">
+            <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-file-plus" viewBox="0 0 20 20">
+            <path d="M8.5 6a.5.5 0 0 0-1 0v1.5H6a.5.5 0 0 0 0 1h1.5V10a.5.5 0 0 0 1 0V8.5H10a.5.5 0 0 0 0-1H8.5V6z"/>
+            <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2zm10-1H4a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1z"/>
+            </svg>
+        </span>
+        <span>Thêm truyện mới</span> 
+    </a>
+</button>
+<h3>Truyện của tôi</h3>
+<p>Danh sách truyện đã đăng</p>
+<div class="container">
+<div class="row">
+	<div class="col-lg-12">
+		<div class="main-box clearfix">
+			<div class="table-responsive">
+				<table class="table user-list">
+					<thead>
+						<tr style="text-align: center">
+                            <th></th>
+							<th><span>Truyện</span></th>
+							<th><span>Ngày tạo</span></th>
+							<th class="text-center"><span>Trạng thái</span></th>
+							<th><span>Số lượt xem</span></th>
+							<th><span>Chức năng</span></th>
+						</tr>
+					</thead>
+					<tbody>
+                        @foreach ($truyens as $item)
+						<tr>
+                            <td>								
+                                <img src="{{ asset( "images/".$item->AnhDaiDien ) }}" alt="">
+                            </td>
+							<td>
+								<a href="chuong/{{ $item->id }}" class="user-link">{{ $item->TenTruyen }}</a>
+								<span class="user-subhead">{{ $item->TenTacGia }}</span><br>
+                                <span>
+                                    @foreach ($theloais as $tl)
+                                        @if ($item->id == $tl->id)
+                                            {{ $tl->TenLoai }}
+                                        @endif
+                                    @endforeach
+                                </span>
+							</td>
+							<td>
+								{{ $item->created_at }}
+							</td>
+							<td class="text-center">
+								<span class="label label-default">{{ $item->TrangThai }}</span>
+							</td>
+							<td>
+								{{ $item->LuotXem }}
+							</td>
+							<td style="width: 20%; text-align: center">
+								<a href="#" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+									</span>
+								</a>
+								<a href="anchi-truyen/edit/{{ $item->id }}" class="table-link">
+									<span class="fa-stack">
+										<i class="fa fa-square fa-stack-2x"></i>
+										<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+									</span>
+								</a>
+                                
+                                
+								<button type="button" class="danger"  data-toggle="modal" data-target="#exampleModal"  >
+                                    <span class="fa-stack">
+                                        <i class="fa fa-square fa-stack-2x"></i>
+                                        <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                    </span>
+                                </button>   
+                                  
+                                  <!-- Modal -->
+                                  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel">Vui lòng xác nhận</h5>
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                          Bạn có chắc chắn muốn xóa truyện này không ?
+                                        </div>
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Thôi</button>
+                                            <form action="anchi-truyen/destroy/{{ $item->id }}" method="post" style="display: inline">
+                                                @csrf
+                                                @method('delete')
+                                                <button type="submit" class="btn btn-primary">Xóa
+                                                </button>
+                                            </form>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+							</td>
+						</tr>
+                        @endforeach
+
+					</tbody>
+				</table>
+			</div>
+
+			<div class="pagination pull-right">
+				{{ $truyens->links() }}
+            </div>
+
+		</div>
+	</div>
+</div>
+</div>
+
 @endsection

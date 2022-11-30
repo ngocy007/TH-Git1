@@ -20,7 +20,6 @@
 <div class="wrapper">
     <div class="container">
         @include('home.homecontent')
-
     </div>
 </div>
 {{--footer--}}

@@ -20,7 +20,7 @@ return new class extends Migration
             $table->float('DanhGiaTB');
             $table->integer('LuotXem');
             $table->text('MoTa');
-            $table->enum('TrangThai', ['ngung', 'dang ra','hoan thanh']);
+            $table->enum('TrangThai', ['Chưa được kiểm duyệt','Ngừng', 'Đang ra','Hoàn Thành']);
             $table->string('TenTacGia',100);
             $table->timestamps();
 

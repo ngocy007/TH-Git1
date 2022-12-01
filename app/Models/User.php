@@ -58,4 +58,12 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+
+    function history()
+    {
+       return $this->
+       belongsToMany(Truyen::class,'lichsu','MaNguoiDung','MaTruyen')
+           ->withPivot('MaChuong');
+
+    }
 }

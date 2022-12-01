@@ -9,21 +9,24 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     @include('layout.boot5css')
+    @stack('styles')
 </head>
 
 <body>
 
 <!-- header will come here -->
-    @include('layout.header')
+@include('layout.header')
 <!-- end header -->
 
 <div class="wrapper">
     <div class="container bg-gray">
-    <h2>content here</h2>
+
+        @yield('main')
 
     </div>
 </div>
 @include('layout.footer')
 @include('layout.boot5js')
+@stack('scripts')
 </body>
 </html>

@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Chuong;
 use App\Models\NguoiDung;
 use App\Models\Truyen;
 use App\Models\User;
@@ -22,6 +23,7 @@ class LichSuFactory extends Factory
         return [
             'MaNguoiDung' => User::query()->inRandomOrder()->value('id'),
             'MaTruyen' => Truyen::query()->inRandomOrder()->value('id'),
+            'MaChuong' => Chuong::query()->inRandomOrder()->value('id'),
         ];
     }
 }

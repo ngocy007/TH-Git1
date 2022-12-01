@@ -19,7 +19,7 @@ return new class extends Migration
 
             $table->foreignId('MaNguoiDung')->constrained('users')->onDelete('cascade');
             $table->foreignId('MaTruyen')->constrained('Truyen')->onDelete('cascade');
-
+             $table->integer('MaChuong');
         });
     }
 

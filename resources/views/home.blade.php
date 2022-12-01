@@ -9,7 +9,6 @@
     <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
     <meta name="viewport" content="width=device-width" />
     @include('layout.boot5css')
-    @stack('styles')
 </head>
 
 <body>
@@ -19,15 +18,14 @@
 <!-- end header -->
 
 <div class="wrapper">
-
     <div class="container">
-    @include('home.homecontent')
+        @include('home.homecontent')
+        @include('home.highrating')
     </div>
 </div>
 {{--footer--}}
 @include('layout.footer')
 {{--end footer--}}
 @include('layout.boot5js')
-@stack('scripts')
 </body>
 </html>

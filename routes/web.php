@@ -21,6 +21,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
+
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/truyen/{id}', [truyenController::class, 'show'])->name('xemtruyen');
 Route::get('/truyen/{id_truyen}/chuong-{id_chuong}', [chuongController::class, 'show'])->name('doctruyen');
@@ -35,6 +36,7 @@ Route::middleware([
    Route::get('/truyen/follow/{id}', [truyenController::class, 'follow'])->name('theogioi');
    Route::post('/truyen/{id_truyen}', [truyenController::class, 'create_comment'])->name('bltruyen');
 });
+
 
 
 

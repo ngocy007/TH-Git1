@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Http\Controllers\Dat;
-
+use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use App\Models\Chuong;
 use App\Models\TheLoai;
 use App\Models\Truyen;
 use Illuminate\Http\Request;
@@ -16,13 +17,32 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $theloai = TheLoai::all();
-        $truyens = Truyen::all()->take(8);
+        $truyens = Truyen::get()->sortByDesc('LuotXem')->take(8);
+        $truyenmois = DB::table('Chuong')
+            ->join('Truyen', 'Chuong.MaTruyen', '=', 'Truyen.id')
+            ->select('Truyen.*', 'Chuong.*')
+            ->orderByDesc('Chuong.id')
+            ->take(8)
+            ->get();
+        // danh gia cao
+        $danhgiacaos = Truyen::get()->sortByDesc('DanhGiaTB')->take(8);
+        // moi danh gia
+        $danhgiamois = DB::table('binhluan')
+            ->join('Truyen', 'binhluan.MaTruyen', '=', 'Truyen.id')
+            ->join('users', 'binhluan.MaNguoiDung', '=', 'users.id')
+            ->select('Truyen.*', 'binhluan.*', 'users.*')
+            ->orderByDesc('binhluan.id')
+            ->take(4)
+            ->get();
         return view('home',
-            ['theloai' => $theloai],
-            ['truyens' => $truyens]
-        );
+        compact(
+            'theloai',
+            'truyens',
+            'truyenmois',
+            'danhgiacaos',
+            'danhgiamois'
+        ));
     }
 
     /**

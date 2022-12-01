@@ -106,11 +106,11 @@ body{margin-top:20px;}
 .table button{
     border: none;
 }
-.table button.danger {
+a.danger {
 	color: #fe635f;
 }
-.table button.danger:hover {
-	color: #dd504c;
+ a.danger:hover{
+	color: #871612;
 }
 
 .table-products tbody > tr > td {
@@ -184,6 +184,15 @@ body{margin-top:20px;}
 }
 .icon-create .bi-file-plus{
     vertical-align: middle;
+}
+.themtruyen{
+    color: black; 
+    text-decoration: none;
+    vertical-align: middle;
+    font-weight: bold;  
+}
+.themtruyen:hover{
+    color: white;
 }
 #themtruyen{
     color: black; 

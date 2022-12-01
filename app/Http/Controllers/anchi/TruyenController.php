@@ -9,6 +9,8 @@ use Illuminate\Http\Request;
 use App\Models\Truyen;
 use Illuminate\Support\Facades\DB;
 
+// use Illuminate\Support\Facades\Storage;
+
 class TruyenController extends Controller
 {
     /**
@@ -19,20 +21,20 @@ class TruyenController extends Controller
     public function index()
     {
         //
-        //$id = Auth::user()->id;
-        $id = 1;
+        //$idND = Auth::user()->idND;
+        $idND = 1;
 
         //$truyens = Truyen::all();
-        $truyens = Truyen::whereIn('MaNguoiDung', [$id])->paginate(5);
+        $truyens = Truyen::whereIn('MaNguoiDung', [$idND])->paginate(5);
 
         $theloais = DB::table('CT_Loai')
             ->join('TheLoai', 'TheLoai.id', '=', 'CT_Loai.MaLoai')
             ->join('Truyen', 'Truyen.id', '=', 'CT_Loai.MaTruyen')
-            ->where('MaNguoiDung', '=' , $id)
+            ->where('MaNguoiDung', '=' , $idND)
             ->select('Truyen.id','Truyen.TenTruyen','TheLoai.TenLoai')
             ->get();
         //  dd($theloais);
-        return view('truyen.index', ['truyens' => $truyens, "theloais" => $theloais]);
+        return view('anchi-truyen.index', ['truyens' => $truyens, "theloais" => $theloais]);
     }
 
     /**
@@ -44,7 +46,7 @@ class TruyenController extends Controller
     {
         //
         $theloais = TheLoai::all();
-        return view('truyen.create', ["theloais" => $theloais]);
+        return view('anchi-truyen.create', ["theloais" => $theloais]);
     }
 
     /**
@@ -55,9 +57,16 @@ class TruyenController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $urlImage = 'image'.time().'-'.$request->TenTruyen.'.'.$request->AnhDaiDien->extension();
-        $request->AnhDaiDien->move(public_path('images'), $urlImage);
+        //$id = Auth::user()->id;
+        $idND = 1;
+
+        if($request->file('AnhDaiDien') != null){
+            $urlImage = 'image'.time().'.'.$request->AnhDaiDien->extension();
+            $request->AnhDaiDien->move(public_path('images'), $urlImage);
+        }
+        else{
+            $urlImage='null.png';
+        }
 
         $truyen = Truyen::create([
                 'TenTruyen' => $request->input('TenTruyen'),
@@ -67,7 +76,7 @@ class TruyenController extends Controller
                 'MoTa' => $request->input('MoTa'),
                 'TrangThai' => $request->input('TrangThai'),
                 'TenTacGia' => $request->input('TenTacGia'),
-                'MaNguoiDung' => $request->input('MaNguoiDung'),
+                'MaNguoiDung' => $idND,
         ]);
 
         $theloais = $request->input('theloai');
@@ -93,6 +102,7 @@ class TruyenController extends Controller
     public function show($id)
     {
         //
+        
     }
 
     /**
@@ -103,7 +113,19 @@ class TruyenController extends Controller
      */
     public function edit($id)
     {
-        //
+        //$idND = Auth::user()->idND;
+        $idND = 1;
+
+        $truyen = Truyen::find($id);
+        $theloais = TheLoai::all();
+        $getloai = DB::table('CT_Loai')
+            ->join('TheLoai', 'TheLoai.id', '=', 'CT_Loai.MaLoai')
+            ->join('Truyen', 'Truyen.id', '=', 'CT_Loai.MaTruyen')
+            ->where('MaNguoiDung', '=' , $idND)
+            ->where('MaTruyen', '=' , $id)
+            ->select('TheLoai.id')
+            ->get();
+        return view('anchi-truyen.edit', ['truyen' => $truyen, 'theloais' => $theloais, 'getloai' => $getloai]);
     }
 
     /**
@@ -116,6 +138,59 @@ class TruyenController extends Controller
     public function update(Request $request, $id)
     {
         //
+        //$id = Auth::user()->id;
+        $idND = 1;
+
+        if($request->file('AnhDaiDien') != null){
+            // $truyenImg=Truyen::whereIn('id', $id)->get();
+            // // $folderPath=public_path($truyenImg->AnhDaiDien);
+            // // File::deleteDirectory($folderPath);
+            // $dd = Storage::disk('local')->delete('public/images/'.$truyenImg->AnhDaiDien);
+            // dd($dd);
+
+            $urlImage = 'image'.time().'-'.$request->TenTruyen.'.'.$request->AnhDaiDien->extension();
+            $request->AnhDaiDien->move(public_path('images'), $urlImage);
+
+            $truyen = Truyen::where('id', $id)->update([
+                'TenTruyen' => $request->input('TenTruyen'),
+                'AnhDaiDien' => $urlImage,
+                'MoTa' => $request->input('MoTa'),
+                'TrangThai' => $request->input('TrangThai'),
+                'TenTacGia' => $request->input('TenTacGia'),
+            ]);
+        }
+        else{
+            $truyen = Truyen::where('id', $id)->update([
+                'TenTruyen' => $request->input('TenTruyen'),
+                'MoTa' => $request->input('MoTa'),
+                'TrangThai' => $request->input('TrangThai'),
+                'TenTacGia' => $request->input('TenTacGia'),
+            ]);
+        }
+
+        $getloai = DB::table('CT_Loai')
+            ->join('TheLoai', 'TheLoai.id', '=', 'CT_Loai.MaLoai')
+            ->join('Truyen', 'Truyen.id', '=', 'CT_Loai.MaTruyen')
+            ->where('MaNguoiDung', '=' , $idND)
+            ->where('MaTruyen', '=' , $id)
+            ->select('TheLoai.id')
+            ->get();
+
+        foreach($getloai as $idloai){
+            $delete_theloai = DB::table('CT_Loai')
+            ->where('MaLoai',  (int)$idloai->id)
+            ->where('MaTruyen' , $id);
+            $delete_theloai->delete();
+        }
+
+        $theloai = $request->input('theloai');
+        foreach($theloai as $value){
+            CT_Loai::create([
+                'MaTruyen' => $id,
+                'MaLoai' => $value
+            ]);
+        }
+        return redirect('anchi-truyen');
     }
 
     /**
@@ -124,6 +199,11 @@ class TruyenController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
+    
+    public function submit_delete($id){
+        return view('anchi-truyen.submit-xoa', ["id" => $id]);
+    }
+
     public function destroy($id)
     {
         //

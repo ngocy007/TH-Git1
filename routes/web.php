@@ -38,9 +38,16 @@ Route::get('anchi-truyen/edit/{id}', [TruyenController::class, 'edit']);
 Route::put('anchi-truyen/update/{id}', [TruyenController::class, 'update']);
 Route::delete('anchi-truyen/destroy/{id}', [TruyenController::class, 'destroy']);
 
-Route::get('/chuong/{id}', [ChuongController::class, 'index']);
-Route::get('/chuong/create/{id}', [ChuongController::class, 'create']);
-Route::post('/chuong/store/{id}', [ChuongController::class, 'store']);
+Route::get('anchi-truyen/submit-delete/{id}', [TruyenController::class, 'submit_delete']);
+
+
+Route::get('anchi-chuong/{id}', [ChuongController::class, 'index']);
+Route::get('anchi-chuong/{id}/create', [ChuongController::class, 'create']);
+Route::post('anchi-chuong/{id}/store', [ChuongController::class, 'store']);
+Route::get('anchi-chuong/{id}/show', [ChuongController::class, 'show']);
+Route::get('anchi-chuong/{idTruyen}/edit/{id}', [ChuongController::class, 'edit']);
+Route::put('anchi-chuong/{idTruyen}/update/{id}', [ChuongController::class, 'update']);
+Route::delete('anchi-chuong/{idTruyen}/destroy', [ChuongController::class, 'destroy']);
 
 
 // Route::middleware([

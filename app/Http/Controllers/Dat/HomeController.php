@@ -3,6 +3,8 @@
 namespace App\Http\Controllers\Dat;
 
 use App\Http\Controllers\Controller;
+use App\Models\TheLoai;
+use App\Models\Truyen;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -14,7 +16,13 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('master');
+
+        $theloai = TheLoai::all();
+        $truyens = Truyen::all()->take(8);
+        return view('home',
+            ['theloai' => $theloai],
+            ['truyens' => $truyens]
+        );
     }
 
     /**

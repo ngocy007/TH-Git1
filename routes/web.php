@@ -19,7 +19,9 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 
+
 Route::get('/', [HomeController::class, 'index']);
+
 
 
 Route::middleware([

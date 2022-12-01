@@ -14,13 +14,12 @@
 <body>
 
 <!-- header will come here -->
-    @include('layout.header')
+@include('layout.header')
 <!-- end header -->
 
 <div class="wrapper">
     <div class="container">
-    @include('home.homecontent')
-
+        @include('home.homecontent')
     </div>
 </div>
 {{--footer--}}

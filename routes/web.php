@@ -18,7 +18,15 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+/*admin*/
+Route::resource('/admintheloai',\App\Http\Controllers\Admin\theloaiController::class);
+Route::resource('/adminquyen',\App\Http\Controllers\Admin\quyenController::class);
+Route::get('/admin',[\App\Http\Controllers\Admin\theloaiController::class,'index2']);
+Route::resource('/trangchuadmin',\App\Http\Controllers\Admin\trangchuController::class);
+Route::resource('/admintruyen',\App\Http\Controllers\Admin\truyenController::class);
+Route::resource('/adminbinhluan',\App\Http\Controllers\Admin\binhluanController::class);
+Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
+Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
 Route::get('/', [HomeController::class, 'index']);
 
 

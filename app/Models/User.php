@@ -27,6 +27,9 @@ class User extends Authenticatable implements MustVerifyEmail
         'name',
         'email',
         'password',
+        'NickName',
+        'SDT',
+        'MaQuyen'
     ];
 
     /**
@@ -58,4 +61,8 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $appends = [
         'profile_photo_url',
     ];
+    public function Quyen()
+    {
+        return $this->belongsToMany(Quyen::class, 'users','id','MaQuyen');
+    }
 }

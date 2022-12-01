@@ -2,6 +2,8 @@
 
 namespace Database\Factories;
 
+use App\Models\TheLoai;
+use App\Models\Truyen;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -16,8 +18,11 @@ class ChuongFactory extends Factory
      */
     public function definition()
     {
-        return [
-            //
-        ];
+       return [
+           'TenChuong' =>fake()->name(),
+           'NoiDung' => fake()->text(200),
+           'SoChuong' => fake()->randomNumber($nbDigits = NULL, $strict = false),
+           'MaTruyen' => Truyen::query()->inRandomOrder()->value('id')
+       ];
     }
 }

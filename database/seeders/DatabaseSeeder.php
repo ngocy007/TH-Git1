@@ -40,23 +40,12 @@ class DatabaseSeeder extends Seeder
             'TenLoai' => 'trang buc'
         ]);
 
-        User::factory(1)->definition();
+        User::factory(30)->create();
+
         Truyen::factory(100)->create();
-        LichSu::factory(100)->create();
-        DB::table('Chuong')->insert([
-            'MaTruyen'=> '2',
-            'SoChuong'=> '4',
-            'TenChuong'=> 'ý vvv',
-            'NoiDung'=> 'ý heo',
-        ]);
 
-        DB::table('Chuong')->insert([
-            'MaTruyen'=> '1',
-            'SoChuong'=> '1',
-            'TenChuong'=> 'chi lol',
-            'NoiDung'=> 'chi an cuc',
-        ]);
-
+        Chuong::factory(200)->create();
+       LichSu::factory(100)->create();
         BinhLuan::factory(100)->create();
         CT_Loai::factory(20)->create();
         TheoDoi::factory(200)->create();

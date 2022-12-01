@@ -2,6 +2,8 @@
 
 
 use App\Http\Controllers\Dat\HomeController;
+use App\Http\Controllers\y\chuongController;
+use App\Http\Controllers\y\truyenController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -27,7 +29,23 @@ Route::resource('/admintruyen',\App\Http\Controllers\Admin\truyenController::cla
 Route::resource('/adminbinhluan',\App\Http\Controllers\Admin\binhluanController::class);
 Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
 Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
+
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/truyen/{id}', [truyenController::class, 'show'])->name('xemtruyen');
+Route::get('/truyen/{id_truyen}/chuong-{id_chuong}', [chuongController::class, 'show'])->name('doctruyen');
+
+
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+   Route::get('/truyen/follow/{id}', [truyenController::class, 'follow'])->name('theogioi');
+   Route::post('/truyen/{id_truyen}', [truyenController::class, 'create_comment'])->name('bltruyen');
+});
+
+
 
 
 Route::middleware([

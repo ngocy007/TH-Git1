@@ -12,11 +12,10 @@
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Bảng xếp hạng</a>
+                    <a class="nav-link dropdown-toggle" href="/leaderboard" data-bs-toggle="dropdown" aria-expanded="false">Bảng xếp hạng</a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-                        <li><a class="dropdown-item" href="#">Another action</a></li>
-                        <li><a class="dropdown-item" href="#">Something else here</a></li>
+                        <li><a class="dropdown-item" href="/leaderboard?sort=1">Top lượt xem</a></li>
+                        <li><a class="dropdown-item" href="/leaderboard?sort=2">Top theo dõi</a></li>
                     </ul>
                 </li>
             </ul>

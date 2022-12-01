@@ -3,7 +3,7 @@
 
 use App\Http\Controllers\Dat\HomeController;
 use Illuminate\Foundation\Application;
-//use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
@@ -50,3 +50,4 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+Route::get('/leaderboard', [\App\Http\Controllers\Viet\LeaderboardController::class, 'index']);

@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('TenTruyen',100);
             $table->string('AnhDaiDien',100);
-            $table->integer('DanhGiaTB');
+            $table->float('DanhGiaTB');
             $table->integer('LuotXem');
             $table->text('MoTa');
             $table->enum('TrangThai', ['ngung', 'dang ra','hoan thanh']);
@@ -25,7 +25,7 @@ return new class extends Migration
             $table->timestamps();
 
             $table->foreignId('MaNguoiDung')
-                ->Constrained('NguoiDung');
+                ->Constrained('users');
         });
     }
 

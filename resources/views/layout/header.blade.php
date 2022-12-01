@@ -6,6 +6,10 @@
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" data-bs-toggle="dropdown" aria-expanded="false">Thể loại</a>
                     <ul class="dropdown-menu">
+                        @php
+                            use App\Models\TheLoai;
+                           $theloai = TheLoai::all();
+                        @endphp
                         @foreach($theloai as $th)
                         <li><a class="dropdown-item" href="#">{{$th->TenLoai}}</a></li>
                         @endforeach

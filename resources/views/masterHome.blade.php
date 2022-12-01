@@ -20,10 +20,8 @@
 
 <div class="wrapper">
 
-    <div class="container bg-gray">
-
-        @yield('main')
-
+    <div class="container">
+        @include('home.homecontent')
     </div>
 </div>
 {{--footer--}}

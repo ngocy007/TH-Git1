@@ -20,6 +20,7 @@
 <div class="wrapper">
     <div class="container">
         @include('home.homecontent')
+        @include('home.highrating')
     </div>
 </div>
 {{--footer--}}

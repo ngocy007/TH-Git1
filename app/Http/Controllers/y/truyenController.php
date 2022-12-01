@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\BinhLuan;
 use App\Models\CT_Loai;
 use App\Models\LichSu;
+use App\Models\TheLoai;
 use App\Models\Truyen;
 use App\Models\User;
 use Illuminate\Http\Request;

@@ -20,6 +20,7 @@
 <div class="wrapper">
     <div class="container bg-gray">
     <h2>content here</h2>
+     @yield('content')
 
     </div>
 </div>

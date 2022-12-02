@@ -1,8 +1,11 @@
 <?php
 
 namespace Database\Factories;
+<<<<<<< HEAD
+=======
 
 use App\Models\NguoiDung;
+>>>>>>> 1d3dab49d3be908ed2a108dd5366318c5664a32d
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 

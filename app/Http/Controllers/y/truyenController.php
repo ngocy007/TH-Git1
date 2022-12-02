@@ -21,6 +21,7 @@ class truyenController extends Controller
 
             $truyens = Truyen::query()->findOrFail($id);
             $newtruyen =$truyens ->chuongs()->orderBy('SoChuong','desc')->first();
+
             $truyenSam = Truyen::query()->where('TenTacGia',$truyens->TenTacGia)->get();
             if (Auth::check())
             {
@@ -39,6 +40,8 @@ class truyenController extends Controller
                   }
                }
             ////////////////////////////////
+
+
               $chuong = $temp[$id] ?? 0 ;
 
                $f = 0;
@@ -58,13 +61,17 @@ class truyenController extends Controller
             }
 
        $history_novel = $request->cookie('history_novel');
-       $temp = json_decode($history_novel, true);
-       if (array_key_exists($truyens->id,$temp))
-       {
-          $chuong = $temp[$truyens->id];
-       }else {
-          $chuong = 0;
-       }
+
+             $chuong = 0;
+            if (!is_null($history_novel))
+            {
+               $temp = json_decode($history_novel, true);
+               if (array_key_exists($truyens->id,$temp))
+               {
+                  $chuong = $temp[$truyens->id];
+               }
+            }
+
 
        return view('y.truyen',compact(
            'truyens', 'chuong', 'newtruyen','truyenSam'
@@ -75,7 +82,7 @@ class truyenController extends Controller
     {
          $id_user = Auth::id();
        $truyens = Truyen::query()->find($id);
-       $truyens->users()->toggle($id_user);
+       $truyens->User()->toggle($id_user);
        return redirect(route('xemtruyen',['id'=>$truyens->id]));
     }
 

@@ -21,12 +21,12 @@ class Truyen extends Model
         'MaNguoiDung'
     ];
     use HasFactory;
-<<<<<<< HEAD
+
     public function User()
     {
         return $this->belongsToMany(User::class, 'truyen','id','MaNguoiDung');
     }
-=======
+
 
    public function chuongs()
    {
@@ -49,5 +49,5 @@ class Truyen extends Model
    {
       return $this->belongsToMany(User::class,'theodoi','MaTruyen','MaNguoiDung');
    }
->>>>>>> 1d3dab49d3be908ed2a108dd5366318c5664a32d
+
 }

@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('content')
+@section('main')
     <div class="wrapper">
         <div class="container bg-indigo-500">
             <div id="listBook" class="page-content rounded-2" style="min-height: 800px;">

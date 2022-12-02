@@ -36,6 +36,7 @@ class userController extends Controller
         return view('adminuser.create',$quyens);
     }
 
+
     /**
      * Store a newly created resource in storage.
      *
@@ -44,8 +45,19 @@ class userController extends Controller
      */
     public function store(Request $request)
     {
+
         User::create($request->all());
-        return redirect()->route('adminuser.index')->with('thongbao','Thêm thành công');
+       // $urlImage= 'image'.time().'.'.$request->profile_photo_path->extension();
+       // $request->profile_photo_path->move(public_path('images'),$urlImage);
+        if($request->has('profile'))
+        {
+            $file=$request->profile;
+            $filename=$file->getClientOriginalName();
+            $file->move(public_path('storage/profile-photos'),$filename);
+        }
+        $request->merge(['profile_photo_path'=>$filename]);
+
+            return redirect()->route('adminuser.index')->with('thongbao','Thêm thành công');
     }
 
     /**
@@ -88,10 +100,12 @@ class userController extends Controller
         $user->password = password_hash($request->password,PASSWORD_DEFAULT);
         //$user->password = $request->password;
        // $user->two_factor_secrect = $request->two_factor_secrect;
+        $user->profile_photo_path = $request->file('profile_photo_path')->store('public');
         $user->NickName = $request->NickName;
         $user->SDT = $request->SDT;
         $user->MaQuyen = $request->MaQuyen;
         $user->save();
+
         return redirect()->route('adminuser.index')->with('thongbao','cập nhật thành công');
     }
 
@@ -106,5 +120,10 @@ class userController extends Controller
         $user = User::find($id);
         $user->delete();
         return redirect()->route('adminuser.index')->with('thongbao','Xóa thành công');
+    }
+    public function profile()
+    {
+
+        return view('adminindex');
     }
 }

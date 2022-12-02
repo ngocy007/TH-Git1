@@ -92,7 +92,7 @@ class truyenController extends Controller
       $truyens = Truyen::query()->findOrFail($id);
 
       BinhLuan::create([
-          'NoiDungBL' => $request->content,
+          'NoiDungBL' => $request->content(),
           'MaTruyen' => $truyens->id,
           'MaNguoiDung' => $id_user,
       ]);

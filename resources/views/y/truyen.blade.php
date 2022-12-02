@@ -7,6 +7,10 @@
 
 
 @section('main')
+    @php
+        use Illuminate\Support\Carbon;
+      $now = Carbon::now();
+    @endphp
     <div class="page-content rounded-2">
         <div class="row no-gutters">
             <div class="col-12">
@@ -86,14 +90,23 @@
                         </div>
                         <ul class="list-unstyled d-flex align-items-center">
                             <li id="reading-book" class="mr-3 w-150">
-                                @auth
+
                                     @if ($chuong === 0)
+                                        @if (!is_null($newtruyen))
                                         <a href="{{route('doctruyen',['id_truyen'=>$truyens->id,'id_chuong'=>1])}}"
                                            class="cursor-pointer btn btn-primary btn-md btn-block btn-shadow font-weight-semibold d-flex align-items-center justify-content-center"
                                            style="color: rgb(255, 255, 255)">
                                             <i class="fa fa-book mr-2"></i
                                             >Đọc truyện
                                         </a>
+                                    @else
+                                        <a href=""
+                                           class="cursor-pointer btn btn-primary btn-md btn-block btn-shadow font-weight-semibold d-flex align-items-center justify-content-center"
+                                           style="color: rgb(255, 255, 255)">
+                                          Đợi
+                                        </a>
+                                        @endif
+
                                     @else
                                         <a href="{{route('doctruyen',['id_truyen'=>$truyens->id,'id_chuong'=>$chuong])}}"
                                            class="cursor-pointer btn btn-danger btn-md btn-block btn-shadow font-weight-semibold d-flex align-items-center justify-content-center"
@@ -102,7 +115,6 @@
                                             >Đọc tiếp
                                         </a>
                                     @endif
-                                @endauth
                             </li>
                             <li id="bookmark" class="mr-3 w-150">
                                 <a class="btn btn-outline-secondary btn-md btn-block font-weight-semibold d-flex align-items-center justify-content-center"
@@ -168,17 +180,19 @@
                                 <td>
                                     <ul class="list-unstyled m-0">
                                         <li class="media">
-                                            <div class="media-body">
-                                                <a href="{{route('doctruyen',['id_truyen'=>$truyens->id,'id_chuong'=>$newtruyen->SoChuong])}}">
-                                                    Chương {{$newtruyen->SoChuong}} : {{$newtruyen->TenChuong}}</a>
-                                            </div>
-                                            <div class="pl-3">
-                                                @php
-                                                    use Illuminate\Support\Carbon;
-                                                      $now = Carbon::now();
-                                                      echo e($now->diffInDays($newtruyen->created_at) ) <= 0 ? $now->diffInHours($newtruyen->created_at) . ' Tiếng trước' : " ngày trước" ;
-                                                @endphp
-                                            </div>
+                                            @if (!is_null($newtruyen))
+                                                <div class="media-body">
+                                                    <a href="{{route('doctruyen',['id_truyen'=>$truyens->id,'id_chuong'=>$newtruyen->SoChuong])}}">
+                                                        Chương {{$newtruyen->SoChuong}} : {{$newtruyen->TenChuong}}</a>
+                                                </div>
+                                                <div class="pl-3">
+                                                    {{($now->diffInDays($newtruyen->created_at) ) <= 0 ? $now->diffInHours($newtruyen->created_at) . ' Tiếng trước' : " ngày trước" ;}}
+                                                </div>
+                                            @else
+                                                <div class="media-body">
+                                                    Truyện chưa có chương.
+                                                </div>
+                                            @endif
                                         </li>
                                     </ul>
                                 </td>

@@ -2,7 +2,7 @@
 
 namespace Database\Factories;
 
-use App\Models\NguoiDung;
+
 use App\Models\Truyen;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;

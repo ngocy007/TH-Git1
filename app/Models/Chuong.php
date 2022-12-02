@@ -8,5 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Chuong extends Model
 {
     protected $table = 'Chuong';
+
     use HasFactory;
+
+    function truyen()
+    {
+       return $this->belongsTo(Truyen::class,'MaTruyen');
+    }
 }

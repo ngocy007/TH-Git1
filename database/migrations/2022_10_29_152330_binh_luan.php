@@ -16,14 +16,14 @@ return new class extends Migration
         Schema::create('BinhLuan', function (Blueprint $table) {
             $table->id();
             $table->text('NoiDungBL');
-            $table->integer('DanhGia');
+            $table->integer('DanhGia')->default(0);
             $table->timestamps();
 
             $table->foreignId('MaTruyen')
                 ->constrained('Truyen')
                 ->onDelete('cascade');
             $table->foreignId('MaNguoiDung')
-                ->constrained('NguoiDung')
+                ->constrained('users')
                 ->onDelete('cascade');
         });
     }

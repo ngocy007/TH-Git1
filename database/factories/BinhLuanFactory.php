@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\NguoiDung;
+
 use App\Models\Truyen;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -22,7 +23,7 @@ class BinhLuanFactory extends Factory
             'NoiDungBL'=>fake()->text(100),
             'DanhGia' => fake()->numberBetween(1,5),
             'MaTruyen' => Truyen::query()->inRandomOrder()->value('id'),
-            'MaNguoiDung' => NguoiDung::query()->inRandomOrder()->value('id'),
+            'MaNguoiDung' => User::query()->inRandomOrder()->value('id'),
         ];
     }
 }

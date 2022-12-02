@@ -2,8 +2,9 @@
 
 namespace Database\Factories;
 
-use App\Models\NguoiDung;
+
 use App\Models\Truyen;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -20,7 +21,7 @@ class TheoDoiFactory extends Factory
     {
         return [
             'MaTruyen' => Truyen::query()->inRandomOrder()->value('id'),
-            'MaNguoiDung' => NguoiDung::query()->inRandomOrder()->value('id')
+            'MaNguoiDung' => User::query()->inRandomOrder()->value('id')
         ];
     }
 }

@@ -30,7 +30,7 @@
             <tr>
                 <td >{{ $item->id }}</td>
                 <td>{{ $item->TenTruyen }}</td>
-                <td>{{ $item->AnhDaiDien }}</td>
+                <td><img src="{{asset('storage/'.$item->AnhDaiDien)}}" class="card-img-top" alt="..."></td>
                 <td>{{ $item->DanhGiaTB }}</td>
                 <td>{{ $item->LuotXem }}</td>
                 <td>{{ $item->MoTa }}</td>

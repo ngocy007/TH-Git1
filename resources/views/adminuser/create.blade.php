@@ -1,6 +1,6 @@
 @extends('adminindex')
 @section('createuser')
-
+    <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <form action="{{route('adminuser.store')}}" method="post" enctype="multipart/form-data">
         @csrf
         <h2>Thêm người dùng</h2>
@@ -26,6 +26,15 @@
             </tr>
             <tr style="background-color: lightcoral">
                 <td>
+                    <span style="font-size: 20px">Anh dai dien</span>
+                </td>
+                <td>
+                    <input class="form-control" id="" type="file" name="profile" placeholder="">
+                </td>
+
+            </tr>
+            <tr style="background-color: lightcoral">
+                <td>
                     <span style="font-size: 20px">Password</span>
                 </td>
                 <td>
@@ -33,6 +42,7 @@
                 </td>
 
             </tr>
+
             <tr style="background-color: lightcoral">
                 <td>
                     <span style="font-size: 20px">NickName</span>
@@ -73,5 +83,5 @@
             </tr>
         </table>
     </form>
-
+    </html>
 @endsection

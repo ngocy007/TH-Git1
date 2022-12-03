@@ -13,6 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
+use Illuminate\Support\Str;
 use Illuminate\View\View;
 
 use function Sodium\compare;
@@ -58,7 +59,6 @@ class truyenController extends Controller
                   }
                }
 
-
                return view('y.truyen',compact(
                    'truyens', 'f', 'chuong', 'newtruyen','truyenSam'
                ));
@@ -92,6 +92,7 @@ class truyenController extends Controller
 
    public  function create_comment($id,Request $request)
    {
+
       $id_user = Auth::id();
       $truyens = Truyen::query()->findOrFail($id);
 
@@ -101,7 +102,9 @@ class truyenController extends Controller
           'MaNguoiDung' => $id_user,
       ]);
 
-      return redirect(route('xemtruyen',['id'=>$truyens->id]))->with('num',2);
+
+
+      return redirect()->route('xemtruyen',['id'=>$truyens->id])->with('num',2);
    }
 
    public function like($id)

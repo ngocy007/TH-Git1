@@ -11,7 +11,7 @@
                            $theloai = TheLoai::all();
                         @endphp
                         @foreach($theloai as $th)
-                        <li><a class="dropdown-item" href="{{route('theloai',$th -> id)}}">{{$th->TenLoai}}</a></li>
+                        <li><a class="dropdown-item" href="/timkiem?q=&l={{$th->id}}">{{$th->TenLoai}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -27,8 +27,8 @@
                     </ul>
                 </li>
             </ul>
-            <form class="nav-item pt-2 form-group w-25">
-                <input class="form-control rounded-pill" type="text" placeholder="Tìm kiếm" aria-label="Search">
+            <form method="get" class="nav-item pt-2 form-group w-25"  action="{{route('search')}}">
+                <input class="form-control rounded-pill" type="text"  name="q" placeholder="Tìm kiếm" value="{{ request()->get('q') }}" aria-label="Search">
             </form>
             <a class="nav-item" aria-current="page" href="{{route('anchi')}}">Đăng truyện</a>
             <a class="nav-item" aria-current="page" href="{{route('BTTH')}}">BTTH</a>

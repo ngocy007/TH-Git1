@@ -9,17 +9,17 @@ use Illuminate\Support\Carbon;
 class Truyen extends Model
 {
     protected $table = 'Truyen';
-    protected $fillable=[
-        'id',
-        'TenTruyen',
-        'AnhDaiDien',
-        'DanhGiaTB',
-        'LuotXem',
-        'MoTa',
-        'TrangThai',
-        'TenTacGia',
-        'MaNguoiDung'
-    ];
+    protected $fillable = [
+      'TenTruyen',
+      'AnhDaiDien',
+      'DanhGiaTB',
+      'LuotXem',
+      'MoTa',
+      'TrangThai',
+      'TenTacGia',
+      'MaNguoiDung',
+  ];
+
     use HasFactory;
 
 

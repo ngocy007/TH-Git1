@@ -11,6 +11,7 @@ class CT_Loai extends Model
 
     use HasFactory;
 
+
     protected $fillable = [
         'MaTruyen',
         'MaLoai'

@@ -23,7 +23,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 /*admin*/
-<<<<<<< HEAD
+
 
 Route::middleware([
     'auth:sanctum',
@@ -41,35 +41,31 @@ Route::middleware([
    Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
    Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
 
-});
-=======
-Route::resource('/admintheloai',\App\Http\Controllers\Admin\theloaiController::class);
-Route::resource('/adminquyen',\App\Http\Controllers\Admin\quyenController::class);
-Route::resource('/trangchuadmin',\App\Http\Controllers\Admin\trangchuController::class);
-Route::resource('/admintruyen',\App\Http\Controllers\Admin\truyenController::class);
-Route::resource('/adminbinhluan',\App\Http\Controllers\Admin\binhluanController::class);
-Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
-Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
-Route::resource('/BTTH',\App\Http\Controllers\admin\BTTHController::class);
-Route::get('btarray1',[\App\Http\Controllers\admin\BTTHController::class,'btarray1']);
-Route::get('btarray2',[\App\Http\Controllers\admin\BTTHController::class,'btarray2']);
-Route::get('btarray3',[\App\Http\Controllers\admin\BTTHController::class,'btarray3']);
-Route::get('btarray4',[\App\Http\Controllers\admin\BTTHController::class,'btarray4']);
-Route::get('btarray5',[\App\Http\Controllers\admin\BTTHController::class,'btarray5']);
-Route::get('btarray6',[\App\Http\Controllers\admin\BTTHController::class,'btarray6']);
-Route::get('btarray7',[\App\Http\Controllers\admin\BTTHController::class,'btarray7']);
-Route::get('bai1pf',[\App\Http\Controllers\admin\BTTHController::class,'bai1pf']);
-Route::get('bai2pf',[\App\Http\Controllers\admin\BTTHController::class,'bai2pf']);
-Route::get('bai3pf',[\App\Http\Controllers\admin\BTTHController::class,'bai3pf']);
-Route::get('bai4pf',[\App\Http\Controllers\admin\BTTHController::class,'bai4pf']);
-Route::get('bai5pf',[\App\Http\Controllers\admin\BTTHController::class,'bai5pf']);
-Route::get('bai6_7pf',[\App\Http\Controllers\admin\BTTHController::class,'bai6_7pf']);
-Route::get('bai8pf',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf']);
-Route::get('bai6_7pf1',[\App\Http\Controllers\admin\BTTHController::class,'bai6_7pf1']);
-Route::get('bai8pf',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf']);
-Route::get('bai8pf1',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf1']);
+   Route::resource('/BTTH',\App\Http\Controllers\admin\BTTHController::class);
+   Route::get('btarray1',[\App\Http\Controllers\admin\BTTHController::class,'btarray1']);
+   Route::get('btarray2',[\App\Http\Controllers\admin\BTTHController::class,'btarray2']);
+   Route::get('btarray3',[\App\Http\Controllers\admin\BTTHController::class,'btarray3']);
+   Route::get('btarray4',[\App\Http\Controllers\admin\BTTHController::class,'btarray4']);
+   Route::get('btarray5',[\App\Http\Controllers\admin\BTTHController::class,'btarray5']);
+   Route::get('btarray6',[\App\Http\Controllers\admin\BTTHController::class,'btarray6']);
+   Route::get('btarray7',[\App\Http\Controllers\admin\BTTHController::class,'btarray7']);
+   Route::get('bai1pf',[\App\Http\Controllers\admin\BTTHController::class,'bai1pf']);
+   Route::get('bai2pf',[\App\Http\Controllers\admin\BTTHController::class,'bai2pf']);
+   Route::get('bai3pf',[\App\Http\Controllers\admin\BTTHController::class,'bai3pf']);
+   Route::get('bai4pf',[\App\Http\Controllers\admin\BTTHController::class,'bai4pf']);
+   Route::get('bai5pf',[\App\Http\Controllers\admin\BTTHController::class,'bai5pf']);
+   Route::get('bai6_7pf',[\App\Http\Controllers\admin\BTTHController::class,'bai6_7pf']);
+   Route::get('bai8pf',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf']);
+   Route::get('bai6_7pf1',[\App\Http\Controllers\admin\BTTHController::class,'bai6_7pf1']);
+   Route::get('bai8pf',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf']);
+   Route::get('bai8pf1',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf1']);
 
->>>>>>> 0c12a54a4d1bb564431750a5ed953bb6664f0380
+
+});
+
+
+
+
 
 
 

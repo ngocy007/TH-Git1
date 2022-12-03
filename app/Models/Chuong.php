@@ -8,7 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class Chuong extends Model
 {
     protected $table = 'Chuong';
+
     use HasFactory;
+
 
     protected $fillable = [
         'MaTruyen',
@@ -16,4 +18,10 @@ class Chuong extends Model
         'TenChuong',
         'NoiDung'
     ];
+
+    function truyen()
+    {
+       return $this->belongsTo(Truyen::class,'MaTruyen');
+    }
+
 }

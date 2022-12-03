@@ -7,6 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class BinhLuan extends Model
 {
+   use HasFactory;
     protected $table ='BinhLuan';
+
+    protected $fillable=[
+        'NoiDungBL',
+        'DanhGia',
+        'MaTruyen',
+        'MaNguoiDung'
+    ];
     use HasFactory;
+
+    public function User()
+    {
+        return $this->belongsToMany(User::class, 'binhluan','id','MaNguoiDung');
+    }
+   public function Users()
+   {
+      return $this->belongsTo(User::class,'MaNguoiDung');
+   }
+    public function Truyen()
+    {
+       return $this->belongsToMany(Truyen::class, 'binhluan', 'id', 'MaTruyen');
+    }
+
+
 }

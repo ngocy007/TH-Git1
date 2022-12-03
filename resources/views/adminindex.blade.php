@@ -243,7 +243,7 @@
                     </a>
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="../../pages/samples/login.html"> Login </a></li>
+                            <li class="nav-item"> <a class="nav-link" href=""> Profile </a></li>
                         </ul>
                     </div>
                 </li>
@@ -274,7 +274,7 @@
                 @yield('edituser')
                 @yield('indexbinhluan')
                 @yield('indexthongke')
-
+                @yield('profile')
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:../../partials/_footer.html -->
@@ -283,6 +283,9 @@
                     <span class="text-muted text-center text-sm-left d-block d-sm-inline-block">Premium <a href="https://www.bootstrapdash.com/" target="_blank">Bootstrap admin template</a> from BootstrapDash.</span>
                     <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Copyright © 2021. All rights reserved.</span>
                 </div>
+
+                <br>
+                <span class="float-none float-sm-right d-block mt-1 mt-sm-0 text-center">Phần Mềm Mã Nguồn Mở-NT88</span>
             </footer>
             <!-- partial -->
         </div>

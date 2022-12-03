@@ -31,7 +31,7 @@ Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
 Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
 
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('trangchu');
 Route::get('/truyen/{id}', [truyenController::class, 'show'])->name('xemtruyen');
 Route::get('/truyen/{id_truyen}/chuong-{id_chuong}', [chuongController::class, 'show'])->name('doctruyen');
 

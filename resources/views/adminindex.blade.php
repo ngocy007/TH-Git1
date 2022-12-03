@@ -207,7 +207,7 @@
                     </div>
                     <div class="collapse" id="charts">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{route('BTTH.store')}}">PHP và MySQL</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{url('phpsql')}}">PHP và MySQL</a></li>
                         </ul>
                     </div>
                 </li>
@@ -257,13 +257,6 @@
                         </ul>
                     </div>
                 </li>
-                <li class="nav-item nav-category">help</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
-                        <i class="menu-icon mdi mdi-file-document"></i>
-                        <span class="menu-title">Documentation</span>
-                    </a>
-                </li>
             </ul>
         </nav>
         <!-- partial -->
@@ -305,6 +298,21 @@
                 @yield('pf8')
                 @yield('pf81')
                 @yield('psql')
+                @yield('21')
+                @yield('22')
+                @yield('23')
+                @yield('24')
+                @yield('25')
+                @yield('26')
+                @yield('271')
+                @yield('272')
+                @yield('28')
+                @yield('29')
+                @yield('210')
+                @yield('211')
+                @yield('2121')
+                @yield('2122')
+                @yield('2123')
 
             </div>
             <!-- content-wrapper ends -->

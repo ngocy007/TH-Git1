@@ -48,6 +48,23 @@ Route::get('bai8pf',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf']
 Route::get('bai6_7pf1',[\App\Http\Controllers\admin\BTTHController::class,'bai6_7pf1']);
 Route::get('bai8pf',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf']);
 Route::get('bai8pf1',[\App\Http\Controllers\admin\BTTHController::class,'bai8pf1']);
+Route::get('2_1',[\App\Http\Controllers\admin\BTTHController::class,'pm2_1']);
+Route::get('2_2',[\App\Http\Controllers\admin\BTTHController::class,'pm2_2']);
+Route::get('2_3',[\App\Http\Controllers\admin\BTTHController::class,'pm2_3']);
+Route::get('2_4',[\App\Http\Controllers\admin\BTTHController::class,'pm2_4']);
+Route::get('2_5',[\App\Http\Controllers\admin\BTTHController::class,'pm2_5']);
+Route::get('2_6',[\App\Http\Controllers\admin\BTTHController::class,'pm2_6']);
+Route::get('2_71',[\App\Http\Controllers\admin\BTTHController::class,'pm2_71']);
+Route::get('2_72',[\App\Http\Controllers\admin\BTTHController::class,'pm2_72']);
+Route::get('2_8',[\App\Http\Controllers\admin\BTTHController::class,'pm2_8']);
+Route::get('2_9',[\App\Http\Controllers\admin\BTTHController::class,'pm2_9']);
+Route::get('2_10',[\App\Http\Controllers\admin\BTTHController::class,'pm2_10']);
+Route::get('2_11',[\App\Http\Controllers\admin\BTTHController::class,'pm2_11']);
+Route::get('2_121',[\App\Http\Controllers\admin\BTTHController::class,'pm2_121']);
+Route::get('2_122',[\App\Http\Controllers\admin\BTTHController::class,'pm2_122']);
+Route::get('2_123',[\App\Http\Controllers\admin\BTTHController::class,'pm2_123']);
+Route::get('phpsql',[\App\Http\Controllers\admin\BTTHController::class,'phpsql']);
+
 
 
 

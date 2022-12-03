@@ -27,6 +27,22 @@
 
                                     @endif
                                 @endif
+                                @if ($request->filled('sta'))
+                                    @if ($request->input('sta')==1)
+                                        <li>
+                                            <a href="{{  url()->full()."&sta=" }}" class="item rounded">
+                                                <small>Hoàn Thành</small>
+                                            </a>
+                                        </li>
+                                    @elseif ($request->input('sta')==2)
+                                        <li>
+                                            <a href="{{  url()->full()."&sta=" }}" class="item rounded">
+                                                <small>Đang ra</small>
+                                            </a>
+                                        </li>
+
+                                    @endif
+                                @endif
                             </ul>
                         </div>
                         <div class="py-2 border-bottom">
@@ -48,12 +64,12 @@
                             <div class="font-weight-semibold mt-1 mb-2">Tình trạng</div>
                             <ul class="list-facet list-unstyled d-flex flex-wrap m-0">
                                 <li>
-                                    <a href="javascript:void(0)" class="item rounded">
+                                    <a href="{{  url()->full()."&sta=2" }}" class="item rounded">
                                         <small>Đang ra</small>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)" class="item rounded">
+                                    <a href="{{  url()->full()."&sta=1"}}" class="item rounded">
                                         <small>Hoàn thành</small>
                                     </a>
                                 </li>
@@ -63,138 +79,46 @@
                     </aside>
                 </div>
                 <div class="col-9">
-                    <!-- <div class="d-flex align-items-center mb-3">
-                      <ul class="list-unstyled m-0 d-flex flex-wrap">
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            href="javascript:void(0)"
-                            role="button"
-                            id="js-genres"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            class="d-block dropdown-toggle pr-4 text-primary"
-                            ><span class="ml-2 font-weight-semibold">Mới cập nhật</span></a
-                          >
-                          <div
-                            aria-labelledby="js-genres"
-                            class="dropdown-menu dropdown-menu-right"
-                          >
-                            <a href="javascript:void(0);" class="dropdown-item active"
-                              >Mới cập nhật</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item">Mới đăng</a>
-                          </div>
-                        </li>
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            class="d-block dropdown-toggle pr-4"
-                            ><span class="ml-2 font-weight-semibold">Lượt đọc</span></a
-                          >
-                          <div
-                            aria-labelledby="js-depute"
-                            class="dropdown-menu dropdown-menu-right"
-                          >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Lượt đọc [ngày]</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Lượt đọc [tuần]</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Lượt đọc [tháng]</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Lượt đọc [toàn]</a
-                            >
-                          </div>
-                        </li>
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            class="d-block dropdown-toggle pr-4"
-                            ><span class="ml-2 font-weight-semibold">Điểm đánh giá</span></a
-                          >
-                          <div
-                            aria-labelledby="js-depute"
-                            class="dropdown-menu dropdown-menu-right"
-                          >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Lượt đánh giá</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Điểm đánh giá</a
-                            >
-                          </div>
-                        </li>
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            href="javascript:void(0);"
-                            class="d-block pr-4 font-weight-semibold"
-                          >
-                            Cất giữ
-                          </a>
-                        </li>
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            href="javascript:void(0);"
-                            class="d-block pr-4 font-weight-semibold"
-                          >
-                            Yêu thích
-                          </a>
-                        </li>
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            role="button"
-                            data-toggle="dropdown"
-                            aria-haspopup="true"
-                            aria-expanded="false"
-                            class="d-block dropdown-toggle pr-4"
-                            ><span class="ml-2 font-weight-semibold">Đề cử</span></a
-                          >
-                          <div
-                            aria-labelledby="js-depute"
-                            class="dropdown-menu dropdown-menu-right"
-                          >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Đề cử [ngày]</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Đề cử [tuần]</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Đề cử [tháng]</a
-                            >
-                            <a href="javascript:void(0);" class="dropdown-item"
-                              >Đề cử [toàn]</a
-                            >
-                          </div>
-                        </li>
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            href="javascript:void(0);"
-                            class="d-block pr-4 font-weight-semibold"
-                          >
-                            Bình luận
-                          </a>
-                        </li>
-                        <li class="nh-dropdown dropdown">
-                          <a
-                            href="javascript:void(0);"
-                            class="d-block pr-4 font-weight-semibold"
-                          >
-                            Số chương
-                          </a>
-                        </li>
-                      </ul>
-                    </div> -->
+                    <div class="d-flex align-items-center mb-3">
+                        <ul class="list-unstyled m-0 d-flex flex-wrap">
+                            <li class="nh-dropdown dropdown">
+                                <a
+                                    href="{{  url()->full()."&sort=1" }}"
+                                    role="button"
+                                    class="d-block dropdown-toggle pr-4"
+                                >
+                                    <span class="ml-2 font-weight-semibold">Mới cập nhật</span>
+                                </a>
+                            </li>
+                            <li class="nh-dropdown dropdown">
+                                <a
+                                    href="{{  url()->full()."&sort=2" }}"
+                                    role="button"
+                                    class="d-block dropdown-toggle pr-4"
+                                >
+                                    <span class="ml-2 font-weight-semibold">Mới đăng</span>
+                                </a>
+                            </li>
+                            <li class="nh-dropdown dropdown">
+                                <a
+                                    href="{{  url()->full()."&sort=3" }}"
+                                    role="button"
+                                    class="d-block dropdown-toggle pr-4"
+                                >
+                                    <span class="ml-2 font-weight-semibold">Lượt đọc</span>
+                                </a>
+                            </li>
+                            <li class="nh-dropdown dropdown">
+                                <a
+                                    href="{{  url()->full()."&sort=4" }}"
+                                    role="button"
+                                    class="d-block dropdown-toggle pr-4"
+                                >
+                                    <span class="ml-2 font-weight-semibold">Cất giữ</span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                     <div class="row mb-3">
                         @if (count($truyens) > 0)
                             @foreach($truyens as $row)
@@ -223,20 +147,25 @@
                                                 <div>
                                                     <div class="d-flex align-items-center fz-13 mr-4 mb-1">
                                                         <span class="icon-wrapper mr-2">
-                                                            <i class="nh-icon icon-user-edit"></i>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-fill" viewBox="0 0 16 16">
+                                                                <path d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3Zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6Z"/>
+                                                            </svg>
                                                         </span>
                                                         <span class="truncate-140">{{$row->TenTacGia}} </span>
                                                     </div>
                                                     <div class="d-flex align-items-center fz-13 mr-4">
                                                         <span class="icon-wrapper mr-2">
-                                                            <i class="nh-icon icon-menu small">
-
-                                                            </i>
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                                                                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0z"/>
+                                                                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8zm8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7z"/>
+                                                            </svg>
                                                         </span>
-                                                        TBD chương
+                                                        {{$row->LuotXem}}
                                                     </div>
                                                 </div>
-                                                <span class="d-inline-block border border-primary small px-2 text-primary ml-auto truncate-100" style="cursor: pointer">
+                                                <span
+                                                    class="d-inline-block border border-primary small px-2 text-primary ml-auto truncate-100"
+                                                    style="cursor: pointer">
                                                     {{$row->TrangThai}}
                                                 </span>
                                             </div>

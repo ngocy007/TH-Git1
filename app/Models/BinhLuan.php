@@ -31,5 +31,10 @@ class BinhLuan extends Model
        return $this->belongsToMany(Truyen::class, 'binhluan', 'id', 'MaTruyen');
     }
 
+   public function Truyen2()
+   {
+      return $this->belongsTo(Truyen::class,'MaTruyen');
+   }
+
 
 }

@@ -43,11 +43,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
    Route::get('/truyen/follow/{id}', [truyenController::class, 'follow'])->name('theogioi');
+   Route::post('/truyen/like/{id}', [truyenController::class, 'like'])->name('like');
+   Route::delete('/truyen/like/{id}', [truyenController::class, 'removeComment'])->name('y.remove.comment');
    Route::post('/truyen/{id_truyen}', [truyenController::class, 'create_comment'])->name('bltruyen');
 });
-
-
-
 
 Route::middleware([
     'auth:sanctum',

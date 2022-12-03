@@ -12,6 +12,10 @@ use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Gate;
+use Illuminate\View\View;
+
+use function Sodium\compare;
 
 class truyenController extends Controller
 {
@@ -92,7 +96,7 @@ class truyenController extends Controller
       $truyens = Truyen::query()->findOrFail($id);
 
       BinhLuan::create([
-          'NoiDungBL' => $request->content(),
+          'NoiDungBL' => $request->input('content'),
           'MaTruyen' => $truyens->id,
           'MaNguoiDung' => $id_user,
       ]);
@@ -100,5 +104,30 @@ class truyenController extends Controller
       return redirect(route('xemtruyen',['id'=>$truyens->id]));
    }
 
+   public function like($id)
+   {
+      $binhluan = BinhLuan::find($id);
+      $binhluan->DanhGia++;
+      $binhluan->save();
+
+      return redirect()
+          ->route('xemtruyen',['id'=>$binhluan->Truyen2->id])
+          ->with('num',2);
+   }
+   public function removeComment($id)
+   {
+      $binhluan = BinhLuan::find($id);
+
+      if (!Gate::allows('delete-post', $binhluan)) {
+         abort(403);
+      }
+
+      $id = $binhluan->Truyen2->id;
+      $binhluan->delete();
+
+      return redirect()
+          ->route('xemtruyen',['id'=>$id])
+          ->with('num',2);
+   }
 
 }

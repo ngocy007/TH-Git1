@@ -49,4 +49,8 @@ class Truyen extends Model
    {
       return $this->belongsToMany(User::class,'theodoi','MaTruyen','MaNguoiDung');
    }
+   public function nguoidang()
+   {
+      return $this->belongsTo(User::class,'MaNguoiDung');
+   }
 }

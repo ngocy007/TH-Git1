@@ -250,7 +250,7 @@
                         </div>
                         <div  class="nh-section mb-4">
                             <div  class="row mt-2">
-                                @foreach($truyens->chuongs as $chuong)
+                                @foreach($truyens->chuongs()->orderBy('SoChuong')->get() as $chuong)
                                     <div class="col-4 border-bottom-dashed">
                                         <a href="{{route('doctruyen',['id_truyen'=>$truyens->id,'id_chuong'=>$chuong->SoChuong])}}"
                                            class="media py-2 mb-1">
@@ -316,7 +316,7 @@
                                 </div>
                             </div>
                             <ul  class="list-unstyled mt-3 mb-4 border-top">
-                                @foreach($truyens->comments()->orderBy('created_at','desc')->get() as $c)
+                                @foreach($truyens->comments()->orderBy('created_at','desc')->get()->paginate(10) as $c)
                                     <li  class="media py-2 border-bottom">
                                         <div  class="nh-avatar nh-avatar--45 mr-3" style="cursor: pointer;">
                                             <img alt="" class="img-fluid"
@@ -332,10 +332,10 @@
                                             </div>
                                             <div  class="d-flex align-items-center">
                                         <span class="small d-flex align-items-center text-tertiary">
-                                            <i class="nh-icon icon-clock mr-2"></i>
+                                            <i class="fa fa-clock-o mr-2"></i>
                                              @php
                                                  $now =  \Illuminate\Support\Carbon::now();
-                                            echo $now->diffInDays($c->created_at) <= 0 ? $now->diffInHours($c->created_at) . ' Tiếng trước' : $now->diffInDays($t->created_at) . ' Ngày trước';
+                                            echo $now->diffInDays($c->created_at) <= 0 ? $now->diffInHours($c->created_at) . ' Tiếng trước' : $now->diffInDays($c->created_at) . ' Ngày trước';
                                              @endphp
                                         </span>
                                             </div>
@@ -343,21 +343,25 @@
                                         <span>
                                            {{$c->NoiDungBL}}
                                         </span>
-                                                <span>
-                                            <a href="#" id="readmore"
-                                               class="text-muted font-weight-semibold">đọc tiếp
-                                            </a>
-                                        </span>
                                             </div>
                                             <div  class="d-flex justify-content-end mt-3 pr-2">
-                                                <button class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3 mr-2">
-                                                    <i class="fa fa-thumbs-o-up mr-2" aria-hidden="true"></i>
-                                                    {{$c->DanhGia}}
-                                                </button>
-                                                <button  data-toggle="modal" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3">
-                                                    <i class="fa fa-exclamation-triangle mr-2"  aria-hidden="true"></i>
-                                                    Báo xấu
-                                                </button>
+                                                <form method="post" action="{{route('like',['id'=>$c->id])}}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3 mr-2">
+                                                        <i class="fa fa-thumbs-o-up mr-2" aria-hidden="true"></i>
+                                                        {{$c->DanhGia}}
+                                                    </button>
+                                                </form>
+                                                @if(Auth::id() == $c->MaNguoiDung)
+                                                    <form method="post" action="{{route('y.remove.comment',['id'=>$c->id])}}" >
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button  data-toggle="modal" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3">
+                                                            <i class="fa fa-exclamation-triangle mr-2"  aria-hidden="true"></i>
+                                                            Báo xấu
+                                                        </button>
+                                                    </form>
+                                                @endif
                                             </div>
                                             <ul  class="list-unstyled mt-2">
 
@@ -383,6 +387,10 @@
             tab[0] = document.getElementById('nav-intro');
             tab[1]  = document.getElementById('nav-chap');
             tab[2] = document.getElementById('nav-comment');
+            init = <?php echo session('num') ?? 0?>;
+
+            tab.forEach(e => e.style.display = 'none');
+            tab[init].style.display = 'block';
 
             function pageTab(index)
             {

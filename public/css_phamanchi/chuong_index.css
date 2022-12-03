@@ -1,0 +1,50 @@
+
+.btn{
+    margin: 20px 0px 20px 0px;
+    vertical-align: middle;
+
+}
+.icon-create .bi-file-plus{
+    vertical-align: middle;
+}
+.themchuong{
+    color: black; 
+    text-decoration: none;
+    vertical-align: middle;
+    font-weight: bold;  
+}
+.themchuong:hover{
+    color: white;
+}
+#themchuong{
+    color: black; 
+    text-decoration: none;
+    vertical-align: middle;
+    font-weight: bold;  
+}
+#themchuong:hover{
+    color: white;
+}
+
+a{
+    text-decoration: none;
+}
+li a:hover{
+    color: black;
+    text-decoration: none;
+}
+
+ a.table-link:hover {
+	text-decoration: none;
+	color: #2aa493;
+}
+/* .danger{
+    color: #fe635f;
+}
+.danger:hover{
+    color: #871612;
+} */
+
+ul.list-group-item{
+    background-color: #2aa493;
+}

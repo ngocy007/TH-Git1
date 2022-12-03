@@ -10,6 +10,7 @@
     <meta name="viewport" content="width=device-width" />
     @include('layout.boot5css')
     @stack('styles')
+
 </head>
 
 <body>
@@ -22,8 +23,9 @@
 
     <div class="container bg-gray">
 
+        @yield('content')
         @yield('main')
-
+        
     </div>
 </div>
 {{--footer--}}

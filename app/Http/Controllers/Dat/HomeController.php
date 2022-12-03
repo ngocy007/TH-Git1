@@ -34,6 +34,8 @@ class HomeController extends Controller
             ->orderByDesc('binhluan.id')
             ->take(4)
             ->get();
+        // dang doc
+
         return view('home',
         compact(
             'truyens',

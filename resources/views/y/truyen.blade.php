@@ -9,6 +9,7 @@
 @section('main')
     @php
         use Illuminate\Support\Carbon;
+
       $now = Carbon::now();
     @endphp
     <div class="page-content rounded-2">
@@ -17,8 +18,12 @@
                 <div class="media">
                     <div class="mr-4 text-center">
                         <div class="nh-thumb nh-thumb--210 shadow">
-                            <img src="{{$truyens->AnhDaiDien}}"
-                                 alt="{{$truyens->TenTruyen}}" />
+                            @if (str_contains($truyens->AnhDaiDien,'https:'))
+                                <img src="{{$truyens->AnhDaiDien}}"
+                                     alt="{{$truyens->TenTruyen}}" />
+                            @else
+                                <img src="{{ asset('images/' . $truyens->AnhDaiDien) }}" alt="">
+                            @endif
                         </div>
                     </div>
                     <div class="media-body">

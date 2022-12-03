@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 
 
+
 class chuongController extends Controller
 {
 
@@ -33,11 +34,13 @@ class chuongController extends Controller
        if (Auth::check()) {
 
              $user = Auth::user();
-                $user->history()->detach($chuong->id);
-                $user->history()->attach(
+             $user->history()->detach($chuong->id);
+             $user->history()->attach(
                     $id_truyen, ['MaChuong' => $chuong->id]
                 );
        }
+
+
 
        if (!is_null($history_novel)) {
           $temp = json_decode($history_novel, true);

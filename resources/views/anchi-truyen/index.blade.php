@@ -53,7 +53,12 @@
                                 @foreach ($truyens as $item)
                                     <tr>
                                         <td>
-                                            <img src="{{ asset('images/' . $item->AnhDaiDien) }}" alt="">
+                                            @if (str_contains($item->AnhDaiDien,'https:'))
+                                                <img src="{{$item->AnhDaiDien}}"
+                                                     alt="{{$item->TenTruyen}}" />
+                                            @else
+                                                <img src="{{ asset('images/' . $item->AnhDaiDien) }}" alt="">
+                                            @endif
                                         </td>
                                         <td>
                                             <a href="anchi-chuong/{{ $item->id }}"

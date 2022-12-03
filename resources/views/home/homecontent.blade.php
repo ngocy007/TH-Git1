@@ -41,13 +41,69 @@
                         <h2 class="h4 mb-0">Đang đọc</h2><a href="" class="link--see-more ml-auto text-primary"> Xem tất cả </a>
                     </div>
                     <ul class="list-unstyled m-0">
-                        <div data-v-f078dda2=""></div>
-                        <li id="item-reading-0" class="media align-items-center py-2 mb-1"><a href="#" class="nh-thumb nh-thumb--32 shadow mr-3"><img src="https://static.cdnno.com/poster/dau-la-dai-luc-trung-sinh-duong-tam/150.jpg?1621052117" width="32"></a>
-                            <div class="media-body">
-                                <h2 class="fz-body mb-1"><a href="#" class="text-overflow-1-lines"> Đấu La Đại Lục Ⅴ Trùng Sinh Đường Tam </a></h2>
-                                <div class="text-muted text-overflow-1-lines"> Đã đọc: 0/1168 </div>
-                            </div>
-                        </li>
+                        <div ></div>
+
+                        @if (!is_null($truyenh))
+                            @auth
+                                @foreach($truyenh as $k => $t)
+                                    <li id="item-reading-0" class="media align-items-center py-2 mb-1">
+                                        <a href="{{route('xemtruyen',['id'=>$t->id])}}" class="nh-thumb nh-thumb--32 shadow mr-3">
+                                            @if (str_contains($t->AnhDaiDien,'https:'))
+                                                <img src="{{$t->AnhDaiDien}}"
+                                                     alt="{{$t->TenTruyen}}" width="32" />
+                                            @else
+                                                <img src="{{ asset('images/' . $t->AnhDaiDien) }}"  width="32" alt="">
+                                            @endif
+                                        </a>
+                                        <div class="media-body">
+                                            <h2 class="fz-body mb-1">
+                                                <a href="{{route('xemtruyen',['id'=>$t->id])}}" class="text-overflow-1-lines">
+                                                    {{$t->TenTruyen}}
+                                                </a>
+                                            </h2>
+                                            <div class="text-muted text-overflow-1-lines">
+                                                Đã đọc đến chương: {{$temp[$t->id]}} /{{count($t->chuongs)}}
+                                            </div>
+                                            <a  href="{{route('doctruyen',['id_truyen'=>$t->id,'id_chuong'=>$temp[$t->id]])}}" class="float-left">
+                                                <small data-v-f078dda2="" class="text-primary">
+                                                    Đọc tiếp
+                                                </small>
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endforeach
+                            @else
+
+                                @foreach($truyenh as $k => $t)
+                                    <li id="item-reading-0" class="media align-items-center py-2 mb-1">
+                                        <a href="{{route('xemtruyen',['id'=>$t->id])}}" class="nh-thumb nh-thumb--32 shadow mr-3">
+                                            @if (str_contains($t->AnhDaiDien,'https:'))
+                                                <img src="{{$t->AnhDaiDien}}"
+                                                     alt="{{$t->TenTruyen}}" width="32" />
+                                            @else
+                                                <img src="{{ asset('images/' . $t->AnhDaiDien) }}"  width="32" alt="">
+                                            @endif
+                                        </a>
+                                        <div class="media-body">
+                                            <h2 class="fz-body mb-1">
+                                                <a href="{{route('xemtruyen',['id'=>$t->id])}}" class="text-overflow-1-lines">
+                                                    {{$t->TenTruyen}}
+                                                </a>
+                                            </h2>
+                                            <div class="text-muted text-overflow-1-lines">
+                                                Đã đọc đến chương: {{$temp[$t->id]}} /{{count($t->chuongs)}}
+                                            </div>
+                                            <a  href="{{route('doctruyen',['id_truyen'=>$t->id,'id_chuong'=>$temp[$t->id]])}}" class="float-left">
+                                                <small data-v-f078dda2="" class="text-primary">
+                                                    Đọc tiếp
+                                                </small>
+                                            </a>
+                                        </div>
+                                    </li>
+                                @endforeach
+
+                            @endauth
+                        @endif
                     </ul>
                 </div>
             </section>

@@ -1,9 +1,10 @@
 <x-guest-layout>
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+<!--            <a href="/">
                 <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
-            </a>
+            </a>-->
+            <a href="/" class="w-20 h-20 fill-current text-gray-500"><img src="https://metruyencv.com/assets/images/logo.png?81123" alt=""></a>
         </x-slot>
 
         <!-- Session Status -->

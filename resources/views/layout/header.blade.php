@@ -11,7 +11,7 @@
                            $theloai = TheLoai::all();
                         @endphp
                         @foreach($theloai as $th)
-                        <li><a class="dropdown-item" href="#">{{$th->TenLoai}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('theloai',$th -> id)}}">{{$th->TenLoai}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -21,6 +21,8 @@
 
                         <li><a class="dropdown-item" href="/leaderboard?sort=1">Top lượt xem</a></li>
                         <li><a class="dropdown-item" href="/leaderboard?sort=2">Top theo dõi</a></li>
+                        <li><a class="dropdown-item" href="/leaderboard?sort=3">Top mới cập nhật</a></li>
+                        <li><a class="dropdown-item" href="/leaderboard?sort=4">Top đánh giá cao</a></li>
 
                     </ul>
                 </li>

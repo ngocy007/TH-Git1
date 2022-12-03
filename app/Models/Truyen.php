@@ -52,11 +52,8 @@ class Truyen extends Model
       return $this->belongsToMany(User::class,'theodoi','MaTruyen','MaNguoiDung');
    }
 
-    /**
-     * Get the indexable data array for the model.
-     *
-     * @return array
-     */
+
+    
     public function toSearchableArray()
     {
         return [
@@ -64,5 +61,11 @@ class Truyen extends Model
 
         ];
     }
+
+
+   public function nguoidang()
+   {
+      return $this->belongsTo(User::class,'MaNguoiDung');
+   }
 
 }

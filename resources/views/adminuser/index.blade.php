@@ -15,6 +15,7 @@
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">Tên người dùng</th>
+                    <th scope="col">Anhr dai dien</th>
                     <th scope="col">Email</th>
                     <th scope="col">NickNamr</th>
                     <th scope="col">SDT</th>
@@ -29,6 +30,7 @@
                         <tr>
                             <td>{{ $item->id }}</td>
                             <td>{{ $item->name }}</td>
+                            <td><img src="{{asset('storage/'.$item->profile_photo_path)}}" class="card-img-top" alt="..."></td>
                             <td>{{ $item->email }}</td>
                             <td>{{ $item->NickName }}</td>
                             <td>{{ $item->SDT }}</td>

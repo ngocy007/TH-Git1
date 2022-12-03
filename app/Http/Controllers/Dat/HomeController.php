@@ -17,12 +17,11 @@ class HomeController extends Controller
      */
     public function index()
     {
-
         $truyens = Truyen::get()->sortByDesc('LuotXem')->take(8);
         $truyenmois = DB::table('Chuong')
             ->join('Truyen', 'Chuong.MaTruyen', '=', 'Truyen.id')
-            ->select('Truyen.*', 'Chuong.*')
             ->orderByDesc('Chuong.id')
+            ->select('Truyen.*','Truyen.id as id_truyen', 'Chuong.*')
             ->take(8)
             ->get();
         // danh gia cao
@@ -31,10 +30,12 @@ class HomeController extends Controller
         $danhgiamois = DB::table('binhluan')
             ->join('Truyen', 'binhluan.MaTruyen', '=', 'Truyen.id')
             ->join('users', 'binhluan.MaNguoiDung', '=', 'users.id')
-            ->select('Truyen.*', 'binhluan.*', 'users.*')
+            ->select('Truyen.*', 'Truyen.id as id_truyen', 'binhluan.*', 'users.*')
             ->orderByDesc('binhluan.id')
             ->take(4)
             ->get();
+        // dang doc
+
         return view('home',
         compact(
             'truyens',

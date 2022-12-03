@@ -11,7 +11,8 @@
         <div class="nh-read__container" style="width: 1000px;">
 
 
-            <div id="js-left-menu" class="nh-read__right sticky" style="
+            <div id="js-left-menu" class="nh-read__right sticky"
+                 style="
             height: 200px; inset: auto -85px auto auto; position: absolute; display: block;
             vertical-align: baseline; box-sizing: border-box; margin: 0; padding-left: 0; padding-right: 0;
              float: none; width: 70px; z-index: 2;">
@@ -209,185 +210,193 @@
 
             <div id="js-read__body" class="nh-read__body rounded-2">
                 <div class="d-flex align-items-center mb-4">
-                    <a class="nh-read__action d-flex align-items-center h6 mb-0 rounded-3 py-2 px-4 disabled">
-                        <i class="fa fa-arrow-left mr-2"></i>
-                        Chương trước
-                    </a>
-                    <a class="nh-read__action d-flex align-items-center h6 mb-0 ml-auto rounded-3 py-2 px-4">
-                        Chương sau
-                        <i class="fa fa-arrow-right ml-2"></i>
-                    </a>
+                    @if ($chuong->SoChuong !== 1)
+                        <a href="{{route('doctruyen',['id_truyen'=>$chuong->MaTruyen,'id_chuong'=>$chuong->SoChuong-1])}}"
+                           class="nh-read__action d-flex align-items-center h6 mb-0 rounded-3 py-2 px-4 disabled">
+                            <i class="fa fa-arrow-left mr-2"></i>
+                            Chương trước
+                        </a>
+                    @else
+                        <a style="color: rgba(51, 51, 51,0.5)!important;"
+                           class=" d-flex align-items-center h6 mb-0 rounded-3 py-2 px-4 disabled">
+                            <i class="fa fa-arrow-left mr-2"></i>
+                            Chương trước
+                        </a>
+                    @endif
+                    @if ($maxChuong !== $chuong->SoChuong)
+                            <a href="{{route('doctruyen',['id_truyen'=>$chuong->MaTruyen,'id_chuong'=>$chuong->SoChuong+1])}}"
+                               class="nh-read__action d-flex align-items-center h6 mb-0 ml-auto rounded-3 py-2 px-4">
+                                Chương sau
+                                <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                        @else
+                            <a style="color: rgba(51, 51, 51,0.5)!important;"  class="nh-read__action d-flex align-items-center h6 mb-0 ml-auto rounded-3 py-2 px-4">
+                                Chương sau
+                                <i class="fa fa-arrow-right ml-2"></i>
+                            </a>
+                    @endif
                 </div>
-                <div class="h1 mb-4 font-weight-normal nh-read__title"> Chương 1: Đan Đế trí nhớ </div>
+                <div class="h1 mb-4 font-weight-normal nh-read__title">Chương : {{$chuong->SoChuong}} {{$chuong->TenChuong}} </div>
 
                 <ul class="list-unstyled d-flex align-items-center flex-wrap">
                     <li class="d-flex mr-4 mb-1">
                         <h1 class="fz-body font-weight-normal m-0">
-                            <a href="https://metruyencv.com/truyen/cuu-tinh-ba-the-quyet" class="text-inherit d-flex align-items-center">
+                            <a href="{{route('xemtruyen',['id'=>$chuong->truyen->id])}}" class="text-inherit d-flex align-items-center">
                                 <i class="fa fa-book mr-1" aria-hidden="true"></i>
-                                Cửu Tinh Bá Thể Quyết
+                                {{$chuong->truyen->TenTruyen}}
                             </a>
                         </h1>
                     </li>
                     <li class="d-flex align-items-center mr-4 mb-1">
                         <i class="fa fa-pencil mr-2" aria-hidden="true"></i>
                         <a href="https://metruyencv.com/ho-so/1000020">
-                            Vô Ưu
+                            {{$chuong->truyen->TenTacGia}}
                         </a>
                     </li>
                     <li class="d-flex align-items-center mr-4 mb-1">
-                        <i class="fa fa-text-height mr-2" aria-hidden="true"></i> 2494 chữ
+                        <i class="fa fa-text-height mr-2" aria-hidden="true"></i>
+                        {{Str::of($chuong->NoiDung)->wordCount()}}
                     </li>
                     <li class="d-flex align-items-center mr-4 mb-1">
-                        <i class="fa fa-heart mr-2" aria-hidden="true"></i> 24 cảm xúc
-                    </li>
-                    <li class="d-flex align-items-center mr-4 mb-1">
-                        <i class="fa fa-clock-o mr-2" aria-hidden="true"></i> 2021-10-12 10:53:53
+                        <i class="fa fa-clock-o mr-2" aria-hidden="true"></i>
+                        {{$chuong->created_at}}
                     </li>
                 </ul>
 
                 <div id="js-read__content" class="nh-read__content post-body"
                      style="font-size: 26px; font-family: &quot;Palatino Linotype&quot;, sans-serif; margin: auto; line-height: 140%;">
-
                     {{$chuong->NoiDung}}
-
-
-{{--                    <a href="https://vtruyen.com/truyen/di-ban-hu-tieu-tai-di-gioi" target="_blank">--}}
-{{--                        <strong class="text-muted">Ta Bán Hủ Tiếu Tại Dị Giới</strong>--}}
-{{--                    </a>--}}
-{{--                    cũng vậy. Một tác phẩm chữa lành tâm hồn tuyệt vời sau những ngày vật lộn ngoài đời thực.--}}
-
-                </div>
-
-                <div class="d-flex justify-content-center mt-5">
-                    <button data-toggle="modal" class="btn rounded-3 text-center px-3 mx-3 nh-read__button d-flex align-items-center flex-column">
-                        <i class="fa fa-star" aria-hidden="true"></i>
-                        <span>Đánh giá</span>
-                    </button>
-
-                    <button data-toggle="modal" class="btn rounded-3 text-center px-3 mx-3 nh-read__button d-flex align-items-center flex-column">
-                        <i class="fa fa-gift" aria-hidden="true"></i>
-                        <span>Tặng quà</span>
-                    </button>
                 </div>
             </div>
-
 
             <div class="mt-3"></div>
 
-
-
-            <div class="nh-read__pagination d-flex mt-3 rounded-2">
-                <a id="prevChapter" class="paginate-chapter-item d-flex align-items-center justify-content-center flex-fill h6 mb-0 py-3 px-4 disabled">
-                    <i class="fa fa-arrow-left mr-2"></i>
-                    Chương trước
-                </a>
-                <a data-toggle="modal" class="nh-read__pagination--report d-flex align-items-center justify-content-center h4 mb-0 py-3 px-4">
-                    <i class="fa fa-exclamation-triangle"></i>
-                </a>
-                <a id="nextChapter" class="paginate-chapter-item d-flex align-items-center justify-content-center flex-fill h6 mb-0 ml-auto py-3 px-4">
-                    Chương sau
-                    <i class="fa fa-arrow-right ml-2">
-                    </i>
-                </a>
+            <div class="d-flex align-items-center">
+                @if ($chuong->SoChuong !== 1)
+                    <a href="{{route('doctruyen',['id_truyen'=>$chuong->MaTruyen,'id_chuong'=>$chuong->SoChuong-1])}}"
+                       style="margin-left: 60px"
+                       class=" nh-read__action d-flex align-items-center h6 mb-0 rounded-3 py-2 px-4 disabled">
+                        <i class="fa fa-arrow-left mr-2"></i>
+                        Chương trước
+                    </a>
+                @else
+                    <a style="color: rgba(51, 51, 51,0.5)!important; margin-left: 60px "
+                       class="d-flex align-items-center h6 mb-0 rounded-3 py-2 px-4 disabled">
+                        <i class="fa fa-arrow-left mr-2"></i>
+                        Chương trước
+                    </a>
+                @endif
+                @if ($maxChuong !== $chuong->SoChuong)
+                    <a href="{{route('doctruyen',['id_truyen'=>$chuong->MaTruyen,'id_chuong'=>$chuong->SoChuong+1])}}"
+                       style="margin-right: 60px"
+                       class="nh-read__action d-flex align-items-center h6 mb-0 ml-auto rounded-3 py-2 px-4">
+                        Chương sau
+                        <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                @else
+                    <a style="color: rgba(51, 51, 51,0.5)!important; margin-right: 60px;"  class="nh-read__action d-flex align-items-center h6 mb-0 ml-auto rounded-3 py-2 px-4">
+                        Chương sau
+                        <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                @endif
             </div>
+
+
             <div id="read-comments" class="nh-read__comments mt-3 rounded">
                 <div class="row">
                     <div class="col-8">
-                        <div data-v-84d735ce="" id="comments">
-                            <div data-v-84d735ce="" class="d-flex">
-                                <h4 data-v-84d735ce="">1056 bình luận</h4> <select data-v-84d735ce=""
-                                                                                   class="custom-select w-auto ml-auto">
-                                    <option data-v-84d735ce="" value="like_count">
+                        <div  id="comments">
+                            <div  class="d-flex">
+                                <h4 >1056 bình luận</h4>
+                                <select class="custom-select w-auto ml-auto">
+                                    <option  value="like_count">
                                         Lượt thích
                                     </option>
-                                    <option data-v-84d735ce="" value="id">
+                                    <option  value="id">
                                         Mới nhất
                                     </option>
-                                    <option data-v-84d735ce="" value="oldest">
+                                    <option  value="oldest">
                                         Cũ nhất
                                     </option>
                                 </select>
                             </div>
-                            <div data-v-84d735ce="" class="comment-form media align-items-center mt-3">
-                                <div data-v-84d735ce="" class="nh-avatar nh-avatar--45 mr-3" style="cursor: pointer;"><img
-                                            data-v-84d735ce="" alt="" class="img-fluid"
-                                            data-src="/images/avatar-profile.png?97b80827721f6116c3dbc797d11d629b"
-                                            src="/images/avatar-profile.png?97b80827721f6116c3dbc797d11d629b" lazy="loaded"></div>
-                                <div data-v-84d735ce="" class="media-body comment-input-block">
-                                    <textarea data-v-84d735ce="" placeholder="Bình luận của bạn" class="form-control bg-light"
-                                              style="height: 60px !important;">
-
-                                    </textarea>
-                                    <button data-v-84d735ce="" class="btn btn-submit bg-transparent text-primary d-flex align-items-center justify-content-center shadow-none px-2">
-                                        <i data-v-84d735ce="" class="nh-icon icon-send"></i>
+                            <div  class="comment-form media align-items-center mt-3">
+                                <div  class="nh-avatar nh-avatar--45 mr-3" style="cursor: pointer;">
+                                    <img alt="" class="img-fluid"
+                                         src="/images/avatar-profile.png?97b80827721f6116c3dbc797d11d629b" lazy="loaded"></div>
+                                <div  class="media-body comment-input-block">
+                                    <textarea  placeholder="Bình luận của bạn"
+                                               class="form-control bg-light"
+                                               style="height: 60px !important;"></textarea>
+                                    <button  class="btn btn-submit bg-transparent text-primary
+                                    d-flex align-items-center justify-content-center shadow-none px-2">
+                                        <i  class="nh-icon icon-send"></i>
                                     </button>
                                 </div>
                             </div>
                             <!-- binh luan -->
-                            <ul data-v-84d735ce="" class="list-unstyled mt-3 mb-4 border-top">
-                                <li data-v-84d735ce="" class="media py-2 border-bottom">
-                                    <div data-v-84d735ce="" class="nh-avatar nh-avatar--45 mr-3" style="cursor: pointer;"><img
-                                                data-v-84d735ce="" alt="" class="img-fluid" data-src="https://static.cdnno.com/user/default/100.jpg"
-                                                src="https://static.cdnno.com/user/default/100.jpg" lazy="loaded">
-                                        <span data-v-84d735ce="" class="level px-1 py-0 small bg-primary rounded-3 text-white">Cấp 0</span>
-                                    </div>
-                                    <div data-v-84d735ce="" class="media-body">
-                                        <div data-v-84d735ce="" class="d-flex">
-                                            <div data-v-84d735ce="" class="d-flex mb-1">
-                                                <a data-v-84d735ce="" href="javascript:void(0)"
-                                                   class="d-inline-block h5 mb-0">hsQym56009
-                                                </a>
+                            <ul  class="list-unstyled mt-3 mb-4 border-top">
 
-                                            </div>
-                                        </div>
-                                        <div data-v-84d735ce="" class="d-flex align-items-center">
-                                            <span data-v-84d735ce="" class="small d-flex align-items-center text-tertiary">
-                                                <i data-v-84d735ce="" class="nh-icon icon-clock mr-2">
-                                                </i> 16 giờ trước <i data-v-84d735ce="" class="nh-icon icon-eye-glasses ml-4 mr-2">
-                                                </i> Chương 30</span>
-                                        </div>
-                                        <div data-v-84d735ce="" class="comment-body mt-2">
-                                            <span>
-                                                nghe nói tác để long ngạo thiên tới c4k mớtiêu<br>để 1 nv phản diện sống tới 4kc thì nản thật
-                                            </span>
-                                            <span style="display: none;">
-                                                <a href="#" id="readmore" class="text-muted font-weight-semibold">đọc tiếp
-                                                </a>
-                                                <a href="#" id="readmore" class="text-muted font-weight-semibold" style="display: none;"></a>
-                                            </span>
-                                        </div>
-                                        <div data-v-84d735ce="" class="d-flex mt-3">
-                                            <div data-v-84d735ce="" class="mr-auto font-weight-semibold">
-                                            </div>
-                                            <button data-v-84d735ce="" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3 mr-2">
-                                                <i data-v-84d735ce="" class="nh-icon icon-like mr-2">
-                                                </i>
-                                                0
-                                            </button>
-                                            <button data-v-84d735ce=""class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3 mr-2">
-                                                <i data-v-84d735ce="" class="nh-icon icon-reply mr-2"></i>
-                                                Trả lời
-                                            </button>
-                                            <button data-v-84d735ce="" data-toggle="modal" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3">
-                                                <i data-v-84d735ce="" class="nh-icon icon-flag mr-2">
-                                                </i>
-                                                Báo xấu
-                                            </button>
-                                            <!---->
-                                        </div>
-                                        <ul data-v-84d735ce="" class="list-unstyled mt-2">
-                                            <!---->
-                                        </ul>
-                                        <!---->
-                                    </div>
-                                </li>
 
+
+                                @foreach($commentsPaginate as $c)
+                                    <li  class="media py-2 border-bottom">
+                                        <div  class="nh-avatar nh-avatar--45 mr-3" style="cursor: pointer;">
+                                            <img alt="" class="img-fluid"
+                                                 src="{{$c->Users->profile_photo_url}}" lazy="loading">
+                                        </div>
+                                        <div  class="media-body">
+                                            <div  class="d-flex">
+                                                <div  class="d-flex mb-1">
+                                                    <a class="d-inline-block h5 mb-0">
+                                                        {{$c->Users->name}}
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div  class="d-flex align-items-center">
+                                        <span class="small d-flex align-items-center text-tertiary">
+                                            <i class="fa fa-clock-o mr-2"></i>
+                                             @php
+                                                 $now =  \Illuminate\Support\Carbon::now();
+                                            echo $now->diffInDays($c->created_at) <= 0 ? $now->diffInHours($c->created_at) . ' Tiếng trước' : $now->diffInDays($c->created_at) . ' Ngày trước';
+                                             @endphp
+                                        </span>
+                                            </div>
+                                            <div  class="comment-body mt-2">
+                                        <span>
+                                           {{$c->NoiDungBL}}
+                                        </span>
+                                            </div>
+                                            <div  class="d-flex justify-content-end mt-3 pr-2">
+                                                <form method="post" action="{{route('like',['id'=>$c->id])}}">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3 mr-2">
+                                                        <i class="fa fa-thumbs-o-up mr-2" aria-hidden="true"></i>
+                                                        {{$c->DanhGia}}
+                                                    </button>
+                                                </form>
+                                                @if(Auth::id() == $c->MaNguoiDung)
+                                                    <form method="post" action="{{route('y.remove.comment',['id'=>$c->id])}}" >
+                                                        @csrf
+                                                        @method('delete')
+                                                        <button  data-toggle="modal" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3">
+                                                            <i class="fa fa-exclamation-triangle mr-2"  aria-hidden="true"></i>
+                                                            Báo xấu
+                                                        </button>
+                                                    </form>
+                                                @endif
+                                            </div>
+                                            <ul  class="list-unstyled mt-2">
+
+                                            </ul>
+
+                                        </div>
+                                    </li>
+                                @endforeach
                             </ul>
-                            <div data-v-84d735ce="" class="text-center mt-4">
-                                <a data-v-84d735ce="" class="btn btn-outline-secondary font-weight-semibold cursor-pointer">
-                                    Xem thêm bình luận
-                                </a>
+
+                            <div  class="text-center mt-4" style="display: flex;justify-content: center">
+                                {{$commentsPaginate->links()}}
                             </div>
                         </div>
                     </div>

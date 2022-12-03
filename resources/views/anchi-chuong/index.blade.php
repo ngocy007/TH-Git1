@@ -1,6 +1,8 @@
 @extends('master')
+
 @section('main')
     @push('styles')
+
         <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
         <link rel="stylesheet" href="{{ asset('css_phamanchi/chuong_index.css') }}">
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"

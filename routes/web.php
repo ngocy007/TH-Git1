@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
+use App\Http\Controllers\anchi\TruyenController;
+use App\Http\Controllers\anchi\ChuongController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,6 +32,29 @@ Route::resource('/admintruyen',\App\Http\Controllers\Admin\truyenController::cla
 Route::resource('/adminbinhluan',\App\Http\Controllers\Admin\binhluanController::class);
 Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
 Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
+
+
+
+//Pham An Chi
+Route::get('anchi-truyen', [TruyenController::class, 'index']);
+Route::get('anchi-truyen/create', [TruyenController::class, 'create']);
+Route::post('anchi-truyen/store', [TruyenController::class, 'store']);
+Route::get('anchi-truyen/show/{id}', [TruyenController::class, 'show']);
+Route::get('anchi-truyen/edit/{id}', [TruyenController::class, 'edit']);
+Route::put('anchi-truyen/update/{id}', [TruyenController::class, 'update']);
+Route::delete('anchi-truyen/destroy/{id}', [TruyenController::class, 'destroy']);
+
+Route::get('anchi-truyen/submit-delete/{id}', [TruyenController::class, 'submit_delete']);
+
+
+Route::get('anchi-chuong/{id}', [ChuongController::class, 'index']);
+Route::get('anchi-chuong/{id}/create', [ChuongController::class, 'create']);
+Route::post('anchi-chuong/{id}/store', [ChuongController::class, 'store']);
+Route::get('anchi-chuong/{id}/show', [ChuongController::class, 'show']);
+Route::get('anchi-chuong/{idTruyen}/edit/{id}', [ChuongController::class, 'edit']);
+Route::put('anchi-chuong/{idTruyen}/update/{id}', [ChuongController::class, 'update']);
+Route::delete('anchi-chuong/{idTruyen}/destroy', [ChuongController::class, 'destroy']);
+
 
 
 Route::get('/', [HomeController::class, 'index']);
@@ -59,6 +84,7 @@ Route::middleware([
         return Inertia::render('Dashboard');
     })->name('dashboard');
 });
+
 
 
 // can thiet cho verify email

@@ -23,14 +23,24 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 /*admin*/
-Route::resource('/admintheloai',\App\Http\Controllers\Admin\theloaiController::class);
-Route::resource('/adminquyen',\App\Http\Controllers\Admin\quyenController::class);
-Route::get('/admin',[\App\Http\Controllers\Admin\theloaiController::class,'index2']);
-Route::resource('/trangchuadmin',\App\Http\Controllers\Admin\trangchuController::class);
-Route::resource('/admintruyen',\App\Http\Controllers\Admin\truyenController::class);
-Route::resource('/adminbinhluan',\App\Http\Controllers\Admin\binhluanController::class);
-Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
-Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+    'checkadmin',
+])->group(function ()
+{
+   Route::resource('/admintheloai',\App\Http\Controllers\Admin\theloaiController::class);
+   Route::resource('/adminquyen',\App\Http\Controllers\Admin\quyenController::class);
+   Route::get('/admin',[\App\Http\Controllers\Admin\theloaiController::class,'index2']);
+   Route::resource('/trangchuadmin',\App\Http\Controllers\Admin\trangchuController::class);
+   Route::resource('/admintruyen',\App\Http\Controllers\Admin\truyenController::class);
+   Route::resource('/adminbinhluan',\App\Http\Controllers\Admin\binhluanController::class);
+   Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
+   Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
+
+});
 
 
 
@@ -48,8 +58,10 @@ Route::middleware([
 ])->group(function () {
    Route::get('/truyen/follow/{id}', [truyenController::class, 'follow'])->name('theogioi');
    Route::post('/truyen/like/{id}', [truyenController::class, 'like'])->name('like');
-   Route::delete('/truyen/like/{id}', [truyenController::class, 'removeComment'])->name('y.remove.comment');
+   Route::delete('/truyen/comment/{id}', [truyenController::class, 'removeComment'])->name('y.remove.comment');
+   Route::delete('/truyen/comment/{id}/chuong-{id_chuong}', [chuongController::class, 'removeComment'])->name('y.remove.blv');
    Route::post('/truyen/{id_truyen}', [truyenController::class, 'create_comment'])->name('bltruyen');
+   Route::post('/truyen/{id_truyen}/chuong-{id_chuong}', [chuongController::class, 'create_comment'])->name('blc');
 });
 
 Route::middleware([
@@ -80,6 +92,8 @@ Route::post('/email/verification-notification', function (Request $request) {
     return back()->with('message', 'Verification link sent!');
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
+
+//nguyen huynh hoang viet
 Route::get('/leaderboard', [\App\Http\Controllers\Viet\LeaderboardController::class, 'index']);
 Route::get('/timkiem',[\App\Http\Controllers\Viet\timkiemController::class, 'index'])->name('search');;
 

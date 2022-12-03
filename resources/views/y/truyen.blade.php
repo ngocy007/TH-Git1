@@ -74,20 +74,7 @@
                                 <div>Cất giữ</div>
                             </li>
                         </ul>
-                        <div class="d-flex align-items-center mb-4">
-                            <i class="fa mr-1 fa-star" style="color: rgb(255,192,0)"></i>
-                            <i class="fa mr-1 fa-star" style="color: rgb(255,192,0)"></i>
-                            <i class="fa mr-1 fa-star" style="color: rgb(255,192,0)"></i>
-                            <i class="fa mr-1 fa-star-o" style="color: rgb(255,192,0)"></i>
-                            <span class="d-inline-block ml-2">
-                            <span class="font-weight-semibold">
-                                4.56
-                            </span>
-                            /5
-                        </span>
 
-                            <span class="d-inline-block text-secondary ml-1">(24 đánh giá)</span>
-                        </div>
                         <ul class="list-unstyled d-flex align-items-center">
                             <li id="reading-book" class="mr-3 w-150">
 
@@ -207,7 +194,7 @@
                                 <h2  class="h4 m-0 py-2">
                                     Cùng tác giả
                                 </h2>
-                                <a  href="/tac-gia/7750" class="mt-2 ml-auto text-primary">
+                                <a  href="{{route('search')}}" class="mt-2 ml-auto text-primary">
                                     Xem tất cả
                                 </a>
                             </div>
@@ -244,9 +231,9 @@
                     <div >
                         <div  class="d-flex align-items-center mb-3">
                             <h4 >Danh sách chương</h4>
-                            <button  class="btn btn-white ml-auto px-3">
-                                <i class="nh-icon icon-sort-asc h4 m-0 float-left"></i>
-                            </button>
+{{--                            <button  class="btn btn-white ml-auto px-3">--}}
+{{--                                <i class="nh-icon icon-sort-asc h4 m-0 float-left"></i>--}}
+{{--                            </button>--}}
                         </div>
                         <div  class="nh-section mb-4">
                             <div  class="row mt-2">
@@ -277,7 +264,7 @@
             </div>
             <div id="nav-comment" style="display: none" role="tabpanel" class="tab-pane fade active show">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <div  id="comments">
                             <div  class="d-flex">
                                 <h4 >23 bình luận</h4>

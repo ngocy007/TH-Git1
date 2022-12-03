@@ -63,7 +63,7 @@ return [
 
     'home' => function(){
         //if you want to go to a specific route
-        return route('trangchu');
+        return route('home');
     },
 
     /*

@@ -49,5 +49,4 @@ class Truyen extends Model
    {
       return $this->belongsToMany(User::class,'theodoi','MaTruyen','MaNguoiDung');
    }
-
 }

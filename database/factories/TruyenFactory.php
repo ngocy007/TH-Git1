@@ -1,8 +1,6 @@
 <?php
 
 namespace Database\Factories;
-
-use App\Models\NguoiDung;
 use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
@@ -26,7 +24,7 @@ class TruyenFactory extends Factory
             'DanhGiaTB'=>fake()->numberBetween(1,5),
             'LuotXem'=>fake()->randomNumber($nbDigits = NULL, $strict = false),
             'MoTa'=>fake()->text(500),
-            'TrangThai'=>fake()->randomElement(['ngung', 'dang ra','hoan thanh']),
+            'TrangThai'=>fake()->randomElement(['Chưa được kiểm duyệt', 'Ngừng','Đang ra','Hoàn Thành']),
             'TenTacGia'=>fake()->name(),
         ];
     }

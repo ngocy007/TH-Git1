@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('Chuong', function (Blueprint $table) {
             $table->id();
             $table->foreignId('MaTruyen')->constrained('Truyen')->onDelete('cascade');
-            $table->integer('SoChuong',false,true);
             $table->string('TenChuong',100);
             $table->text('NoiDung');
+            $table->integer('SoChuong');
             $table->timestamps();
         });
     }

@@ -11,6 +11,7 @@ use Illuminate\Notifications\Notifiable;
 class Truyen extends Model
 {
     protected $table = 'Truyen';
+
     protected $fillable=[
         'id',
         'TenTruyen',
@@ -23,6 +24,7 @@ class Truyen extends Model
         'MaNguoiDung'
     ];
     use HasFactory,Notifiable, Searchable;
+
 
     public function User()
     {

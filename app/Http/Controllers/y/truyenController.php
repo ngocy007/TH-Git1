@@ -86,7 +86,7 @@ class truyenController extends Controller
     {
          $id_user = Auth::id();
        $truyens = Truyen::query()->find($id);
-       $truyens->User()->toggle($id_user);
+       $truyens->users()->toggle($id_user);
        return redirect(route('xemtruyen',['id'=>$truyens->id]));
     }
 

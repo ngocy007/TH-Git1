@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Laravel\Scout\Searchable;
+use Illuminate\Notifications\Notifiable;
 
 class Truyen extends Model
 {
@@ -20,7 +22,7 @@ class Truyen extends Model
         'TenTacGia',
         'MaNguoiDung'
     ];
-    use HasFactory;
+    use HasFactory,Notifiable, Searchable;
 
     public function User()
     {
@@ -49,8 +51,21 @@ class Truyen extends Model
    {
       return $this->belongsToMany(User::class,'theodoi','MaTruyen','MaNguoiDung');
    }
+
+
+    
+    public function toSearchableArray()
+    {
+        return [
+            'TenTruyen' => $this->TenTruyen,
+
+        ];
+    }
+
+
    public function nguoidang()
    {
       return $this->belongsTo(User::class,'MaNguoiDung');
    }
+
 }

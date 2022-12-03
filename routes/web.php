@@ -32,6 +32,7 @@ Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
 Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
 
 
+
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/theloai/{id}', [theloaiController::class, 'show'])->name('theloai');
 Route::get('/truyen/{id}', [truyenController::class, 'show'])->name('xemtruyen');
@@ -79,3 +80,4 @@ Route::post('/email/verification-notification', function (Request $request) {
 })->middleware(['auth', 'throttle:6,1'])->name('verification.send');
 
 Route::get('/leaderboard', [\App\Http\Controllers\Viet\LeaderboardController::class, 'index']);
+Route::get('/timkiem',[\App\Http\Controllers\Viet\timkiemController::class, 'index'])->name('search');;

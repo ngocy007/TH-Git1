@@ -27,17 +27,15 @@ const verificationLinkSent = computed(() => props.status === 'verification-link-
         </template>
 
         <div class="mb-4 text-sm text-gray-600">
-            Before continuing, could you verify your email address by clicking on the link we just emailed to you? If you didn't receive the email, we will gladly send you another.
-        </div>
+            Trước khi tiếp tục, bạn có thể xác minh địa chỉ email của mình bằng cách nhấp vào liên kết chúng tôi vừa gửi cho bạn qua email không? Nếu bạn không nhận được email, chúng tôi sẽ sẵn lòng gửi cho bạn một email khác.        </div>
 
         <div v-if="verificationLinkSent" class="mb-4 font-medium text-sm text-green-600">
-            A new verification link has been sent to the email address you provided in your profile settings.
-        </div>
+            Một liên kết xác minh mới đã được gửi đến địa chỉ email bạn đã cung cấp trong cài đặt hồ sơ của mình.        </div>
 
         <form @submit.prevent="submit">
             <div class="mt-4 flex items-center justify-between">
                 <PrimaryButton :class="{ 'opacity-25': form.processing }" :disabled="form.processing">
-                    Resend Verification Email
+                    Gửi lại email xác minh
                 </PrimaryButton>
 
                 <div>

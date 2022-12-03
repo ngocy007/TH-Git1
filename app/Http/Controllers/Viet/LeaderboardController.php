@@ -17,12 +17,14 @@ class LeaderboardController extends Controller
      */
     public function index(Request $request)
     {
+        //dd($request);
         $data = DB::table('Truyen')
             ->leftJoin('TheoDoi', 'Truyen.id', '=', 'TheoDoi.MaTruyen')
             ->select(DB::raw("Truyen.id,truyen.AnhDaiDien,truyen.TenTruyen,truyen.LuotXem,truyen.MoTa,truyen.TrangThai,count('MaNguoiDung') as theodoi"))
             ->groupBy('Truyen.id')
             ->orderBy('truyen.LuotXem','desc')
             ->paginate(5)->appends(['sort' => '1']);
+
         if(2 == $request->input('sort')){
             $data = DB::table('Truyen')
                 ->join('TheoDoi', 'Truyen.id', '=', 'TheoDoi.MaTruyen')
@@ -32,7 +34,6 @@ class LeaderboardController extends Controller
                 ->paginate(5)->appends(['sort' => '2']);
             //select `Truyen`.`id`,COUNT(`TheoDoi`.`MaNguoiDung`) as `theodoi`  from `Truyen`,`TheoDoi` WHERE `Truyen`.`id`=`TheoDoi`.`MaTruyen` group by `Truyen`.`id` ORDER by `Truyen`.`id`;
         }
-
         return view('leaderboard', compact('data','request'))->with('i', (\request()->input('page', 1)-1)*5);
     }
 

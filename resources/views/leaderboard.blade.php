@@ -1,6 +1,6 @@
 @extends('master')
 
-@section('content')
+@section('main')
     <div class="wrapper">
         <div class="container bg-indigo-500">
             <div id="listBook" class="page-content rounded-2" style="min-height: 800px;">
@@ -32,7 +32,7 @@
                                                  style="height: 160px">
                                         </div>
                                         <div class="col-10 mb-6">
-                                            <a href="#" class="list-group-item list-group-item-action rounded"
+                                            <a href="{{route('xemtruyen',['id'=>$row->id])}}" class="list-group-item list-group-item-action rounded"
                                                aria-current="true">
                                                 <div class="d-flex w-100 justify-content-between">
                                                     <h5 class="mb-1">{{ $row->TenTruyen }}</h5>

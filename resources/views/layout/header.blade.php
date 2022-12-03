@@ -25,8 +25,8 @@
                     </ul>
                 </li>
             </ul>
-            <form class="nav-item pt-2 form-group w-25">
-                <input class="form-control rounded-pill" type="text" placeholder="Tìm kiếm" aria-label="Search">
+            <form method="get" class="nav-item pt-2 form-group w-25"  action="{{route('search')}}">
+                <input class="form-control rounded-pill" type="text"  name="q" placeholder="Tìm kiếm" value="{{ request()->get('q') }}" aria-label="Search">
             </form>
             <a class="nav-item" aria-current="page" href="#">Đăng truyện</a>
             <ul class="navbar-nav">

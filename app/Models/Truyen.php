@@ -5,11 +5,30 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Laravel\Scout\Searchable;
+use Illuminate\Notifications\Notifiable;
 
 class Truyen extends Model
 {
     protected $table = 'Truyen';
-    use HasFactory;
+    protected $fillable=[
+        'id',
+        'TenTruyen',
+        'AnhDaiDien',
+        'DanhGiaTB',
+        'LuotXem',
+        'MoTa',
+        'TrangThai',
+        'TenTacGia',
+        'MaNguoiDung'
+    ];
+    use HasFactory,Notifiable, Searchable;
+
+    public function User()
+    {
+        return $this->belongsToMany(User::class, 'truyen','id','MaNguoiDung');
+    }
+
 
    public function chuongs()
    {
@@ -32,4 +51,18 @@ class Truyen extends Model
    {
       return $this->belongsToMany(User::class,'theodoi','MaTruyen','MaNguoiDung');
    }
+
+    /**
+     * Get the indexable data array for the model.
+     *
+     * @return array
+     */
+    public function toSearchableArray()
+    {
+        return [
+            'TenTruyen' => $this->TenTruyen,
+
+        ];
+    }
+
 }

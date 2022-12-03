@@ -40,33 +40,33 @@ const closeModal = () => {
 <template>
     <ActionSection>
         <template #title>
-            Delete Account
+            Xóa tài khoản
         </template>
 
         <template #description>
-            Permanently delete your account.
+            Vĩnh viễn xóa tài khoản của bạn
         </template>
 
         <template #content>
             <div class="max-w-xl text-sm text-gray-600">
-                Once your account is deleted, all of its resources and data will be permanently deleted. Before deleting your account, please download any data or information that you wish to retain.
+                Sau khi tài khoản của bạn bị xóa, tất cả tài nguyên và dữ liệu của tài khoản đó sẽ bị xóa vĩnh viễn. Trước khi xóa tài khoản của bạn, vui lòng tải xuống bất kỳ dữ liệu hoặc thông tin nào bạn muốn giữ lại.
             </div>
 
             <div class="mt-5">
                 <DangerButton @click="confirmUserDeletion">
-                    Delete Account
+                     Xóa tài khoản
                 </DangerButton>
             </div>
 
             <!-- Delete Account Confirmation Modal -->
             <DialogModal :show="confirmingUserDeletion" @close="closeModal">
                 <template #title>
-                    Delete Account
+                    Xóa tài khoản
                 </template>
 
                 <template #content>
-                    Are you sure you want to delete your account? Once your account is deleted, all of its resources and data will be permanently deleted. Please enter your password to confirm you would like to permanently delete your account.
 
+                    Bạn có chắc rằng bạn muốn xóa tài khoản của bạn? Sau khi tài khoản của bạn bị xóa, tất cả tài nguyên và dữ liệu của tài khoản đó sẽ bị xóa vĩnh viễn. Vui lòng nhập mật khẩu của bạn để xác nhận bạn muốn xóa vĩnh viễn tài khoản của mình.
                     <div class="mt-4">
                         <TextInput
                             ref="passwordInput"
@@ -83,7 +83,7 @@ const closeModal = () => {
 
                 <template #footer>
                     <SecondaryButton @click="closeModal">
-                        Cancel
+                        Hủy
                     </SecondaryButton>
 
                     <DangerButton
@@ -92,7 +92,7 @@ const closeModal = () => {
                         :disabled="form.processing"
                         @click="deleteUser"
                     >
-                        Delete Account
+                        Xóa tài khoản
                     </DangerButton>
                 </template>
             </DialogModal>

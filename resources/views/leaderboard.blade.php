@@ -19,6 +19,18 @@
                             else
                                 echo "list-group-item list-group-item-action"
                             ?>">Top Theo Dõi</a>
+                            <a href="?sort=3" class="<?php
+                            if (3 == $request->input('sort'))
+                                echo "list-group-item list-group-item-action active";
+                            else
+                                echo "list-group-item list-group-item-action"
+                            ?>">Top mới cập nhật</a>
+                            <a href="?sort=4" class="<?php
+                            if (4 == $request->input('sort'))
+                                echo "list-group-item list-group-item-action active";
+                            else
+                                echo "list-group-item list-group-item-action"
+                            ?>">Top đánh giá cao</a>
                         </div>
                     </div>
                     <div class="col-9">
@@ -32,7 +44,7 @@
                                                  style="height: 160px">
                                         </div>
                                         <div class="col-10 mb-6">
-                                            <a href="#" class="list-group-item list-group-item-action rounded"
+                                            <a href="{{route('xemtruyen', $row -> id)}}" class="list-group-item list-group-item-action rounded"
                                                aria-current="true">
                                                 <div class="d-flex w-100 justify-content-between">
                                                     <h5 class="mb-1">{{ $row->TenTruyen }}</h5>

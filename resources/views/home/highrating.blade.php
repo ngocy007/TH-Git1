@@ -15,17 +15,17 @@
                     @foreach($chunks as $danhgiacao)
                     <div class="col-6">
                         <div class="media">
-                            <a href="#" class="nh-thumb nh-thumb--72 shadow mr-3"><img src="{{$danhgiacao -> AnhDaiDien}}" alt="" width="72"></a>
+                            <a href="{{route('xemtruyen', $danhgiacao -> id)}}" class="nh-thumb nh-thumb--72 shadow mr-3"><img src="{{$danhgiacao -> AnhDaiDien}}" alt="" width="72"></a>
                             <div class="media-body">
                                 <h2 class="fz-body text-overflow-1-lines mb-2">
-                                    <a href="#" class="d-block">{{$danhgiacao -> TenTruyen}}</a>
+                                    <a href="{{route('xemtruyen',$danhgiacao -> id)}}" class="d-block">{{$danhgiacao -> TenTruyen}}</a>
                                 </h2>
                                 <div class="d-flex align-items-center mb-2">
                                     <div class="bg-danger rounded-3 h6 my-0 mr-3 text-white px-2 py-1">
                                         {{$danhgiacao -> DanhGiaTB}}
                                     </div>
                                     <div class="text-success">
-                                        xx đánh giá
+
                                     </div>
                                 </div>
                                 <div class="text-secondary fz-14 text-overflow-2-lines">
@@ -65,14 +65,14 @@
                 <li class="px-4 py-3 pb-4 bg-yellow-white rounded-2 mb-3">
                     <div class="d-flex align-items-center">
                         <div class="mr-2">
-                            <a href=""><img src="{{$danhgiamoi -> AnhDaiDien}}" alt="Shivuuuuuuuuu" width="45" height="45" class="rounded-circle overflow-hidden mr-2"></a>
+                            <a href="{{route('xemtruyen', $danhgiamoi -> id_truyen)}}"><img src="{{$danhgiamoi -> AnhDaiDien}}" alt="" width="45" height="45" class="rounded-circle overflow-hidden mr-2"></a>
                         </div>
                         <div class="pl-1">
                             <div class="text-secondary">
-                                <a href="" class="font-weight-semibold text-body">{{$danhgiamoi -> name}}</a>
+                                <a href="{{route('xemtruyen', $danhgiamoi -> id_truyen)}}" class="font-weight-semibold text-body">{{$danhgiamoi -> name}}</a>
                                 đánh giá
                             </div>
-                            <a href="" class="text-danger font-weight-semibold">{{$danhgiamoi -> TenTruyen}}</a>
+                            <a href="{{route('xemtruyen', $danhgiamoi -> id_truyen)}}" class="text-danger font-weight-semibold">{{$danhgiamoi -> TenTruyen}}</a>
                         </div>
                         <div class="ml-auto bg-danger rounded-3 h6 my-0 text-white px-2 py-1">
                             {{$danhgiamoi -> DanhGia}}

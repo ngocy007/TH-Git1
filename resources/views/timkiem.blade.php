@@ -14,7 +14,20 @@
                     <aside>
                         <div class="border-bottom">
                             <div class="font-weight-semibold mb-2">Đã chọn</div>
-                            <ul class="list-facet list-unstyled d-flex flex-wrap m-0"></ul>
+                            <ul class="list-facet list-unstyled d-flex flex-wrap m-0">
+                                @if ($request->filled('l'))
+                                    @if (count($theloais) > 0)
+                                        @foreach($theloais as $row)
+                                            <li>
+                                                <a href="{{  url()->full()."&l="}}" class="item rounded">
+                                                    <small>{{$row->TenLoai}}</small>
+                                                </a>
+                                            </li>
+                                        @endforeach
+
+                                    @endif
+                                @endif
+                            </ul>
                         </div>
                         <div class="py-2 border-bottom">
                             <div class="font-weight-semibold mt-1 mb-2">Thể loại</div>
@@ -22,7 +35,7 @@
                                 @if (count($theloai) > 0)
                                     @foreach($theloai as $row)
                                         <li>
-                                            <a href="#" class="item rounded">
+                                            <a href="{{  url()->full()."&l=".$row->id }}" class="item rounded">
                                                 <small>{{$row->TenLoai}}</small>
                                             </a>
                                         </li>
@@ -241,7 +254,7 @@
                         @endif
 
                     </div>
-                    {!! $truyens->links() !!}
+                    {!! $truyens->appends(['q' => request()->query('q'),'l' => request()->query('l')])->links() !!}
                 </div>
             </div>
         </div>

@@ -18,12 +18,14 @@ class timkiemController extends Controller
      */
     public function index(Request $request)
     {
+        //dd($request);
         $q = $request->input('q');
+        $ts = $request->input('l');
         //$truyens = Truyen::query()->get()->partition(20);
         $theloai = TheLoai::get();
-        //xu ly tim kiem
+        //xu ly tim kiem theo ten
         if($request->filled('q')){
-            $truyens = Truyen::search($request->q)->paginate(20)->appends(['q' => $q]);
+            $truyens = Truyen::search($request->q)->paginate(20);
 
         }else{
             $truyens = DB::table('Truyen')
@@ -32,9 +34,19 @@ class timkiemController extends Controller
                 ->groupBy('Truyen.id')
                 ->paginate(20)->appends(['q' => $q]);
         }
-
+        // xu ly tim kiem theo the loai
+        if($request->filled('l')){
+            $theloais = DB::table('TheLoai')
+                ->select('*')
+                ->where('id','=',$ts)
+                ->get();
+            $ts="da vao";
+        }
+        else{
+            $theloais = null;
+        }
         //$newtruyen =$truyens ->chuongs()->orderBy('SoChuong','desc')->first();
-        return view('timkiem', compact('truyens','theloai'));
+        return view('timkiem', compact('truyens','theloai','request','theloais'));
     }
 
     /**

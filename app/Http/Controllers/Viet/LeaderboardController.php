@@ -17,6 +17,7 @@ class LeaderboardController extends Controller
      */
     public function index(Request $request)
     {
+        //dd($request);
         $data = DB::table('Truyen')
             ->leftJoin('TheoDoi', 'Truyen.id', '=', 'TheoDoi.MaTruyen')
             ->select(DB::raw("Truyen.id,truyen.AnhDaiDien,truyen.TenTruyen,truyen.LuotXem,truyen.MoTa,truyen.TrangThai,count('MaNguoiDung') as theodoi"))

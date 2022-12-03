@@ -1,6 +1,5 @@
 @extends('adminindex')
 @section('indexuser')
-    @include('db')
     <div class="mt-4">
         <h2>người dùng</h2>
         <div class="mt-4">

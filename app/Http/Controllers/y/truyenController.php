@@ -101,7 +101,7 @@ class truyenController extends Controller
           'MaNguoiDung' => $id_user,
       ]);
 
-      return redirect(route('xemtruyen',['id'=>$truyens->id]));
+      return redirect(route('xemtruyen',['id'=>$truyens->id]))->with('num',2);
    }
 
    public function like($id)

@@ -316,7 +316,7 @@
                                 </div>
                             </div>
                             <ul  class="list-unstyled mt-3 mb-4 border-top">
-                                @foreach($truyens->comments()->orderBy('created_at','desc')->get()->paginate(10) as $c)
+                                @foreach($truyens->comments()->orderBy('created_at','desc')->get() as $c)
                                     <li  class="media py-2 border-bottom">
                                         <div  class="nh-avatar nh-avatar--45 mr-3" style="cursor: pointer;">
                                             <img alt="" class="img-fluid"

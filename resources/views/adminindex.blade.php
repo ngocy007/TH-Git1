@@ -201,12 +201,22 @@
                 <li class="nav-item">
                     <a class="nav-link" data-bs-toggle="collapse" href="#charts" aria-expanded="false" aria-controls="charts">
                         <i class="menu-icon mdi mdi-chart-line"></i>
-                        <span class="menu-title">Biểu đồ</span>
+                        <span class="menu-title">Bài tập thực hành</span>
                         <i class="menu-arrow"></i>
                     </a>
                     <div class="collapse" id="charts">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="../charts/chartjs.html">thống kê biểu đồ</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{route('BTTH.index')}}">Mảng-Chuỗi-Hàm</a></li>
+                        </ul>
+                    </div>
+                    <div class="collapse" id="charts">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{route('BTTH.create')}}">PHP và Form</a></li>
+                        </ul>
+                    </div>
+                    <div class="collapse" id="charts">
+                        <ul class="nav flex-column sub-menu">
+                            <li class="nav-item"> <a class="nav-link" href="{{route('BTTH.store')}}">PHP và MySQL</a></li>
                         </ul>
                     </div>
                 </li>
@@ -284,6 +294,27 @@
                 @yield('indexbinhluan')
                 @yield('indexthongke')
                 @yield('profile')
+                @yield('array')
+                @yield('ar1')
+                @yield('ar2')
+                @yield('ar3')
+                @yield('ar4')
+                @yield('ar5')
+                @yield('ar6')
+                @yield('ar7')
+                @yield('pf')
+                @yield('pf1')
+                @yield('pf2')
+                @yield('pf3')
+                @yield('pf4')
+                @yield('pf5')
+                @yield('pf6_7')
+                @yield('pf6_71')
+                @yield('pf7')
+                @yield('pf8')
+                @yield('pf81')
+                @yield('psql')
+
             </div>
             <!-- content-wrapper ends -->
             <!-- partial:../../partials/_footer.html -->

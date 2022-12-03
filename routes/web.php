@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AnChi\AnChiChuongController;
 use App\Http\Controllers\Dat\HomeController;
+use App\Http\Controllers\Dat\theloaiController;
 use App\Http\Controllers\y\chuongController;
 use App\Http\Controllers\y\truyenController;
 use App\Http\Controllers\AnChi\AnChiTruyenController;
@@ -32,7 +33,8 @@ Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
 Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
 
 
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::get('/theloai/{id}', [theloaiController::class, 'show'])->name('theloai');
 Route::get('/truyen/{id}', [truyenController::class, 'show'])->name('xemtruyen');
 Route::get('/truyen/{id_truyen}/chuong-{id_chuong}', [chuongController::class, 'show'])->name('doctruyen');
 
@@ -44,11 +46,10 @@ Route::middleware([
     'verified',
 ])->group(function () {
    Route::get('/truyen/follow/{id}', [truyenController::class, 'follow'])->name('theogioi');
+   Route::post('/truyen/like/{id}', [truyenController::class, 'like'])->name('like');
+   Route::delete('/truyen/like/{id}', [truyenController::class, 'removeComment'])->name('y.remove.comment');
    Route::post('/truyen/{id_truyen}', [truyenController::class, 'create_comment'])->name('bltruyen');
 });
-
-
-
 
 Route::middleware([
     'auth:sanctum',

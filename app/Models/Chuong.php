@@ -22,4 +22,5 @@ class Chuong extends Model
     {
        return $this->belongsTo(Truyen::class,'MaTruyen');
     }
+
 }

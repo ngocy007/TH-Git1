@@ -6,7 +6,7 @@
                     <h2 class="h4 mb-3">
                         Đánh giá cao
                     </h2>
-                    <a href="#" class="link--see-more ml-auto text-primary">
+                    <a href="{{'leaderboard'.'?sort=4'}}" class="link--see-more ml-auto text-primary">
                         Xem tất cả
                     </a>
                 </div>
@@ -25,7 +25,7 @@
                                         {{$danhgiacao -> DanhGiaTB}}
                                     </div>
                                     <div class="text-success">
-
+                                        {{count($danhgiacao -> comments)}} Đánh giá
                                     </div>
                                 </div>
                                 <div class="text-secondary fz-14 text-overflow-2-lines">

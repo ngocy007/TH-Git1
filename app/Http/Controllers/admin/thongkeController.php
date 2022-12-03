@@ -28,8 +28,8 @@ class thongkeController extends Controller
         $tk_b = DB::table('binhluan')
             ->selectRaw('count(*) as binhluan')
             ->first();
-        $tk_tl = DB::table('theloai')
-            ->selectRaw('count(*) as theloai')
+        $tk_tl = DB::table('theloaiController')
+            ->selectRaw('count(*) as theloaiController')
             ->first();
         $tk_q = DB::table('Quyen')
             ->selectRaw('count(*) as quyen')

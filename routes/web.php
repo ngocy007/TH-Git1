@@ -23,7 +23,7 @@ use Illuminate\Foundation\Auth\EmailVerificationRequest;
 |
 */
 /*admin*/
-<<<<<<< HEAD
+
 
 Route::middleware([
     'auth:sanctum',
@@ -32,17 +32,6 @@ Route::middleware([
     'checkadmin',
 ])->group(function ()
 {
-   Route::resource('/admintheloai',\App\Http\Controllers\Admin\theloaiController::class);
-   Route::resource('/adminquyen',\App\Http\Controllers\Admin\quyenController::class);
-   Route::get('/admin',[\App\Http\Controllers\Admin\theloaiController::class,'index2']);
-   Route::resource('/trangchuadmin',\App\Http\Controllers\Admin\trangchuController::class);
-   Route::resource('/admintruyen',\App\Http\Controllers\Admin\truyenController::class);
-   Route::resource('/adminbinhluan',\App\Http\Controllers\Admin\binhluanController::class);
-   Route::resource('/adminuser',\App\Http\Controllers\Admin\userController::class);
-   Route::resource('/adminthongke',\App\Http\Controllers\Admin\thongkeController::class);
-
-});
-=======
 Route::resource('/admintheloai',\App\Http\Controllers\Admin\theloaiController::class);
 Route::resource('/adminquyen',\App\Http\Controllers\Admin\quyenController::class);
 Route::resource('/trangchuadmin',\App\Http\Controllers\Admin\trangchuController::class);
@@ -86,7 +75,8 @@ Route::get('2_123',[\App\Http\Controllers\admin\BTTHController::class,'pm2_123']
 Route::get('phpsql',[\App\Http\Controllers\admin\BTTHController::class,'phpsql']);
 
 
->>>>>>> 0c12a54a4d1bb564431750a5ed953bb6664f0380
+});
+
 
 
 

@@ -7,22 +7,28 @@ use Illuminate\Http\Request;
 use App\Models\CT_Loai;
 use App\Models\TheLoai;
 use App\Models\Truyen;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class AnChiTruyenController extends Controller
 {
-    /**
+
+
+
+
+
+   /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
-     */
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    */
     public function index()
     {
-        //
-        $idND = 1;
 
-        //$truyens = Truyen::all();
-        $truyens = Truyen::whereIn('MaNguoiDung', [$idND])->paginate(5);
+       $idND = Auth::id();
+
+
+        $truyens = Truyen::whereIn('MaNguoiDung', [$idND])->orderBy('updated_at','desc')->paginate(5);
 
         $theloais = DB::table('CT_Loai')
             ->join('TheLoai', 'TheLoai.id', '=', 'CT_Loai.MaLoai')
@@ -54,9 +60,8 @@ class AnChiTruyenController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        //$id = Auth::user()->id;
-        $idND = 1;
+
+       $idND = Auth::id();
 
         if($request->file('AnhDaiDien') != null){
             $urlImage = 'image'.time().'.'.$request->AnhDaiDien->extension();
@@ -110,9 +115,8 @@ class AnChiTruyenController extends Controller
      */
     public function edit($id)
     {
-        //
-        //$idND = Auth::user()->idND;
-        $idND = 1;
+
+       $idND = Auth::id();
 
         $truyen = Truyen::find($id);
         $theloais = TheLoai::all();
@@ -135,9 +139,8 @@ class AnChiTruyenController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        //$id = Auth::user()->id;
-        $idND = 1;
+
+       $idND = Auth::id();
 
         if($request->file('AnhDaiDien') != null){
             // $truyenImg=Truyen::whereIn('id', $id)->get();

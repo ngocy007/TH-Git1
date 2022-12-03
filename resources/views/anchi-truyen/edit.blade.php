@@ -42,9 +42,9 @@
 
             <label for="TrangThai">Trạng thái</label>
             <select id="TrangThai" class="form-select mb-4" name="TrangThai" required>
-                <option value="ngừng" {{ $truyen->TrangThai == 'ngừng' ? 'selected' : '' }}>ngừng</option>
-                <option value="đang ra" {{ $truyen->TrangThai == 'đang ra' ? 'selected' : '' }}>đang ra</option>
-                <option value="hoàn thành" {{ $truyen->TrangThai == 'hoàn thành' ? 'selected' : '' }}>hoàn thành</option>
+                <option value="ngừng" {{ $truyen->TrangThai == 'Ngừng' ? 'selected' : '' }}>ngừng</option>
+                <option value="đang ra" {{ $truyen->TrangThai == 'Đang ra' ? 'selected' : '' }}>đang ra</option>
+                <option value="hoàn thành" {{ $truyen->TrangThai == 'Hoàn Thành' ? 'selected' : '' }}>hoàn thành</option>
             </select>
             <div class="form-floating mb-4" >
                 <input type="text" id="TenTacGia" class="form-control" placeholder="Tên tác giả" name="TenTacGia"

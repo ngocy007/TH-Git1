@@ -31,7 +31,7 @@
                 <input class="form-control rounded-pill" type="text"  name="q" placeholder="Tìm kiếm" value="{{ request()->get('q') }}" aria-label="Search">
             </form>
             <a class="nav-item" aria-current="page" href="{{route('anchi')}}">Đăng truyện</a>
-            <a class="nav-item" aria-current="page" href="{{route('BTTH')}}">BTTH</a>
+            <a class="nav-item" aria-current="page" href="{{route('BTTH.index')}}">BTTH</a>
             <ul class="navbar-nav">
                 @auth
                     @if (Laravel\Jetstream\Jetstream::managesProfilePhotos())

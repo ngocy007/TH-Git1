@@ -78,8 +78,10 @@
             </th>
         </table>
         <div class="input-group mb-3">
-            <button type="submit">luu</button>
+            <button class="btn btn-primary" type="submit">lưu</button>
+            <button type="reset" class="btn btn-primary">reset</button>
         </div>
 
     </form>
+    <a href="javascript:window.history.back(-1);">Trở về</a>
 @endsection

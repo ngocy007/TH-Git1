@@ -5,22 +5,26 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
+use Laravel\Scout\Searchable;
+use Illuminate\Notifications\Notifiable;
 
 class Truyen extends Model
 {
     protected $table = 'Truyen';
-    protected $fillable = [
-      'TenTruyen',
-      'AnhDaiDien',
-      'DanhGiaTB',
-      'LuotXem',
-      'MoTa',
-      'TrangThai',
-      'TenTacGia',
-      'MaNguoiDung',
-  ];
 
-    use HasFactory;
+    protected $fillable=[
+        'id',
+        'TenTruyen',
+        'AnhDaiDien',
+        'DanhGiaTB',
+        'LuotXem',
+        'MoTa',
+        'TrangThai',
+        'TenTacGia',
+        'MaNguoiDung'
+    ];
+    use HasFactory,Notifiable, Searchable;
+
 
     public function User()
     {
@@ -49,8 +53,21 @@ class Truyen extends Model
    {
       return $this->belongsToMany(User::class,'theodoi','MaTruyen','MaNguoiDung');
    }
+
+
+    
+    public function toSearchableArray()
+    {
+        return [
+            'TenTruyen' => $this->TenTruyen,
+
+        ];
+    }
+
+
    public function nguoidang()
    {
       return $this->belongsTo(User::class,'MaNguoiDung');
    }
+
 }

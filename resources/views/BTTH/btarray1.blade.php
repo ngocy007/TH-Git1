@@ -135,7 +135,7 @@ function simple_quick_sort($arr)
             </tr>
         </table>
     </form>
-    <a href="javascript:window.history.back(-1);">Trở về</a>
+    <a href="{{route('BTTH.index')}}">Trở về</a>
 </div>
 <?php
 if (isset($_GET['submit'])) {

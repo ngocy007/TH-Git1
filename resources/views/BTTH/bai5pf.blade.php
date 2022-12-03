@@ -116,7 +116,7 @@ if(isset($_GET["submit"]) ) //&& $_POST["hk"] > $_POST["hs"]
         </table>
     </form>
 </div>
-<a href="javascript:window.history.back(-1);">Trở về</a>
+<a href="{{route('BTTH.create')}}">Trở về</a>
 </body>
 
 </html>

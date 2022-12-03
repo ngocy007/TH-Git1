@@ -124,7 +124,7 @@ if(isset($_GET["submit"]) )
         </table>
     </form>
 </div>
-<a href="javascript:window.history.back(-1);">Trở về</a>
+<a href="{{route('BTTH.create')}}">Trở về</a>
 </body>
 
 </html>

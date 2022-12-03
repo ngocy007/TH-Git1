@@ -26,10 +26,11 @@
             <tr>
                 <td>
                     <button type="submit" class="btn btn-primary">lưu</button>
-                    trở về
+                    <button type="reset" class="btn btn-primary">reset</button>
                 </td>
 
             </tr>
         </table>
     </form>
+    <a href="javascript:window.history.back(-1);">Trở về</a>
 @endsection

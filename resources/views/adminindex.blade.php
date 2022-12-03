@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Facades\Auth
+@endphp
 <!DOCTYPE html>
 <html lang="en">
 
@@ -128,18 +131,24 @@
                 </li>
                 <li class="nav-item dropdown d-none d-lg-block user-dropdown">
                     <a class="nav-link" id="UserDropdown" href="#" data-bs-toggle="dropdown" aria-expanded="false">
-                        <img class="img-xs rounded-circle" src="../../images/faces/face8.jpg" alt="Profile image"> </a>
+                        <img class="img-xs rounded-circle" src="{{Auth::user()->profile_photo_url }}" alt="Profile image"> </a>
                     <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="UserDropdown">
                         <div class="dropdown-header text-center">
-                            <img class="img-md rounded-circle" src="../../images/faces/face8.jpg" alt="Profile image">
-                            <p class="mb-1 mt-3 font-weight-semibold">Allen Moreno</p>
-                            <p class="fw-light text-muted mb-0">allenmoreno@gmail.com</p>
+                            <img class="img-md rounded-circle" src="{{Auth::user()->profile_photo_url }}" alt="Profile image">
+                            <p class="mb-1 mt-3 font-weight-semibold">{{Auth::user()->name}}</p>
+                            <p class="fw-light text-muted mb-0">{{Auth::user()->email}}</p>
                         </div>
-                        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2"></i> My Profile <span class="badge badge-pill badge-danger">1</span></a>
+                        <a href="{{route('profile.show')}}" class="dropdown-item"><i class="dropdown-item-icon mdi mdi-account-outline text-primary me-2">
+
+                            </i> My Profile <span class="badge badge-pill badge-danger">1</span>
+                        </a>
                         <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-message-text-outline text-primary me-2"></i> Messages</a>
                         <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-calendar-check-outline text-primary me-2"></i> Activity</a>
                         <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-help-circle-outline text-primary me-2"></i> FAQ</a>
-                        <a class="dropdown-item"><i class="dropdown-item-icon mdi mdi-power text-primary me-2"></i>Sign Out</a>
+                        <form class="dropdown-item " method="post" action="{{ route('logout') }}" >
+                            @csrf
+                            <button class="border-0 bg-light rounded-2">Đăng xuất</button>
+                        </form>
                     </div>
                 </li>
             </ul>
@@ -207,7 +216,7 @@
                     </div>
                     <div class="collapse" id="charts">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href="{{route('BTTH.store')}}">PHP và MySQL</a></li>
+                            <li class="nav-item"> <a class="nav-link" href="{{url('phpsql')}}">PHP và MySQL</a></li>
                         </ul>
                     </div>
                 </li>
@@ -253,16 +262,9 @@
                     </a>
                     <div class="collapse" id="auth">
                         <ul class="nav flex-column sub-menu">
-                            <li class="nav-item"> <a class="nav-link" href=""> Profile </a></li>
+                            <li class="nav-item"> <a class="nav-link"  href="{{ route('profile.show') }}"> Profile </a></li>
                         </ul>
                     </div>
-                </li>
-                <li class="nav-item nav-category">help</li>
-                <li class="nav-item">
-                    <a class="nav-link" href="http://bootstrapdash.com/demo/star-admin2-free/docs/documentation.html">
-                        <i class="menu-icon mdi mdi-file-document"></i>
-                        <span class="menu-title">Documentation</span>
-                    </a>
                 </li>
             </ul>
         </nav>
@@ -305,6 +307,21 @@
                 @yield('pf8')
                 @yield('pf81')
                 @yield('psql')
+                @yield('21')
+                @yield('22')
+                @yield('23')
+                @yield('24')
+                @yield('25')
+                @yield('26')
+                @yield('271')
+                @yield('272')
+                @yield('28')
+                @yield('29')
+                @yield('210')
+                @yield('211')
+                @yield('2121')
+                @yield('2122')
+                @yield('2123')
 
             </div>
             <!-- content-wrapper ends -->

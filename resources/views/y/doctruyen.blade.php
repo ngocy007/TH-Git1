@@ -4,9 +4,6 @@
     <link rel="stylesheet" href="{{asset('y/css/all-destop.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-
-
-
 @endpush
 
 @section('main')
@@ -307,7 +304,7 @@
 
             <div id="read-comments" class="nh-read__comments mt-3 rounded">
                 <div class="row">
-                    <div class="col-8">
+                    <div class="col-12">
                         <div  id="comments">
                             <div  class="d-flex">
                                 <h4 >1056 bình luận</h4>
@@ -325,22 +322,27 @@
                             </div>
                             <div  class="comment-form media align-items-center mt-3">
                                 <div  class="nh-avatar nh-avatar--45 mr-3" style="cursor: pointer;">
-                                    <img alt="" class="img-fluid"
-                                         src="/images/avatar-profile.png?97b80827721f6116c3dbc797d11d629b" lazy="loaded"></div>
+                                    @auth
+                                        <img alt="" class="img-fluid"
+                                             src="{{Auth::user()->profile_photo_url}}" >
+                                    @else
+                                        <img alt="" class="img-fluid"
+                                             src="{{env('Avata_Default')}}" >
+                                    @endauth
+                                </div>
                                 <div  class="media-body comment-input-block">
-                                    <textarea  placeholder="Bình luận của bạn"
-                                               class="form-control bg-light"
-                                               style="height: 60px !important;"></textarea>
-                                    <button  class="btn btn-submit bg-transparent text-primary
-                                    d-flex align-items-center justify-content-center shadow-none px-2">
-                                        <i  class="nh-icon icon-send"></i>
-                                    </button>
+
+                                    <form action="{{route('blc',['id_truyen'=>$chuong->truyen->id,'id_chuong'=>1])}}" method="post">
+                                        @csrf
+                                        <textarea name="content" placeholder="Bình luận của bạn" class="form-control bg-light" style="height: 60px !important;"></textarea>
+                                        <button type="submit" class="btn btn-submit bg-transparent text-primary d-flex align-items-center justify-content-center shadow-none px-2">
+                                            <i class="fa fa-paper-plane"></i>
+                                        </button>
+                                    </form>
                                 </div>
                             </div>
                             <!-- binh luan -->
                             <ul  class="list-unstyled mt-3 mb-4 border-top">
-
-
 
                                 @foreach($commentsPaginate as $c)
                                     <li  class="media py-2 border-bottom">
@@ -379,7 +381,7 @@
                                                     </button>
                                                 </form>
                                                 @if(Auth::id() == $c->MaNguoiDung)
-                                                    <form method="post" action="{{route('y.remove.comment',['id'=>$c->id])}}" >
+                                                    <form method="post" action="{{route('y.remove.blv',['id'=>$c->id,'id_chuong'=>$chuong->SoChuong])}}" >
                                                         @csrf
                                                         @method('delete')
                                                         <button  data-toggle="modal" class="btn btn-sm btn-white fz-body text-tertiary rounded-3 d-flex align-items-center px-3">
@@ -402,18 +404,6 @@
                                 {{$commentsPaginate->links()}}
                             </div>
                         </div>
-                    </div>
-                    <div class="col-4">
-                        <div>
-                            <div class="nh-read__pagination" style="text-align: center;">
-                                <a href="https://vtruyen.com/truyen/thinh-the-dien-ninh"
-                                   target="_blank">
-                                    <img src="https://static.cdnno.com/storage/topbox/e272bd1e205fda7dcc879acd5c51e1f6.jpg"
-                                         alt="Thịnh Thế Diên Ninh" class="img-fluid">
-                                </a>
-                            </div>
-                        </div>
-                        <hr class="my-3">
                     </div>
                 </div>
             </div>

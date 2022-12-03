@@ -62,7 +62,6 @@ if(isset($_GET["reset"]))
     table {
         width: 70%;
         text-align: center;
-        margin-left: 500px;
     }
 
     td {
@@ -150,7 +149,7 @@ if(isset($_GET["reset"]))
         </table>
     </form>
 </div>
-<a href="javascript:window.history.back(-1);">Trở về</a>
+<a href="{{route('BTTH.create')}}">Trở về</a>
 </body>
 
 </html>

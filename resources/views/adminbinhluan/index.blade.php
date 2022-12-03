@@ -8,7 +8,7 @@
                 {{Session::get('thongbao')}}
             @endif
         </div>
-    <table class="mt-4 table table-hover">
+    <table class="mt-4 table table-hover" style="width: 100px">
         <thead>
         <tr>
             <th scope="col">id</th>
@@ -19,7 +19,6 @@
 
         </tr>
         </thead>
-        <tbody>
 
         @foreach ($binhluan as $item)
             <tr>
@@ -46,9 +45,6 @@
                 </td>
             </tr>
         @endforeach
-
-        </tbody>
-
     </table>
         {{ $binhluan->links()}}
 </div>

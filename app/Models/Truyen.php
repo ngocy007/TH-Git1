@@ -19,8 +19,6 @@ class Truyen extends Model
         'TrangThai',
         'TenTacGia',
         'MaNguoiDung',
-        'created_at',
-        'update_at'
     ];
 
 

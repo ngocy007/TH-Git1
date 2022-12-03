@@ -5,6 +5,8 @@ namespace App\Http\Controllers\anchi;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Chuong;
+use App\Models\Truyen;
+use Illuminate\Support\Facades\DB;
 
 class ChuongController extends Controller
 {
@@ -16,8 +18,12 @@ class ChuongController extends Controller
     public function index($idTruyen)
     {
         //
-        $chuongs = Chuong::whereIn('MaTruyen', [$idTruyen])->get();
-        return view('chuong.index', ['chuongs' => $chuongs, 'idTruyen' => $idTruyen]);
+        $chuongs = Chuong::whereIn('MaTruyen', [$idTruyen])->paginate(20);
+
+        $truyen = Truyen::whereIn('id', [$idTruyen])->get();
+        // dd($truyen);
+
+        return view('anchi-chuong.index', ['chuongs' => $chuongs, "idTruyen" => $idTruyen, "truyen" => $truyen]);
     }
 
     /**
@@ -25,9 +31,10 @@ class ChuongController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($idTruyen)
     {
         //
+        return view('anchi-chuong.create', ["idTruyen" => $idTruyen]);
     }
 
     /**
@@ -36,9 +43,22 @@ class ChuongController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store($idTruyen, Request $request)
     {
         //
+        $number_chuong = DB::table('Chuong')
+            ->where('MaTruyen', '=' , $idTruyen)
+            ->select('id')
+            ->count();
+        Chuong::create([
+            'MaTruyen' => $idTruyen,
+            'SoChuong' => $number_chuong+1,
+            'TenChuong' => $request->input('TenChuong'),
+            'NoiDung' => $request->input('NoiDung'),
+        ]);
+
+
+        return redirect('anchi-chuong/'.$idTruyen);
     }
 
     /**
@@ -58,9 +78,14 @@ class ChuongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($idTruyen, $id)
     {
         //
+        $chuong = DB::table('Chuong')
+        ->where('id', $id)
+        ->where('MaTruyen' , $idTruyen)->get();
+
+        return view('anchi-chuong.edit', ['id' => $id, 'idTruyen' => $idTruyen, "chuong" => $chuong[0]]);
     }
 
     /**
@@ -70,9 +95,16 @@ class ChuongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, $idTruyen, $id)
     {
         //
+        DB::table('Chuong')->where('id', $id)->where('MaTruyen', $idTruyen)->update([
+            'TenChuong' => $request->input('TenChuong'),
+            'NoiDung' => $request->input('NoiDung'),
+        ]);
+
+
+        return redirect('anchi-chuong/'.$idTruyen);
     }
 
     /**
@@ -81,8 +113,18 @@ class ChuongController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy($idTruyen)
     {
         //
+        $number_chuong = DB::table('Chuong')
+            ->where('MaTruyen', '=' , $idTruyen)
+            ->select('id')
+            ->count();
+
+        DB::table('Chuong')
+        ->where('SoChuong', $number_chuong)
+        ->where('MaTruyen', $idTruyen)->delete();
+        
+        return redirect('anchi-chuong/'.$idTruyen);
     }
 }

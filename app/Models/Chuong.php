@@ -11,8 +11,16 @@ class Chuong extends Model
 
     use HasFactory;
 
+    protected $fillable = [
+        'MaTruyen',
+        'SoChuong',
+        'TenChuong',
+        'NoiDung'
+    ];
+    
     function truyen()
     {
        return $this->belongsTo(Truyen::class,'MaTruyen');
     }
+
 }

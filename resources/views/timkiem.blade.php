@@ -75,6 +75,15 @@
                                 </li>
                             </ul>
                         </div>
+                        <div class="py-2 border-bottom">
+                            <ul class="list-facet list-unstyled d-flex flex-wrap m-0">
+                                <li>
+                                    <a href="/timkiem?q=" class="item rounded">
+                                        <small>Reset</small>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
 
                     </aside>
                 </div>

@@ -11,7 +11,7 @@
                            $theloai = TheLoai::all();
                         @endphp
                         @foreach($theloai as $th)
-                        <li><a class="dropdown-item" href="#">{{$th->TenLoai}}</a></li>
+                        <li><a class="dropdown-item" href="{{route('theloai',$th -> id)}}">{{$th->TenLoai}}</a></li>
                         @endforeach
                     </ul>
                 </li>

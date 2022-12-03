@@ -23,7 +23,7 @@
 
     <div class="container bg-gray">
 
-        @yield('content')
+
         @yield('main')
         
     </div>

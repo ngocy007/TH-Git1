@@ -53,7 +53,7 @@ if (isset($_GET["submit"])) {
         </tr>
     </form>
 </table>
-<a href="javascript:window.history.back(-1);">Trở về</a>
+<a href="{{route('BTTH.index')}}">Trở về</a>
 </body>
 </html>
 @endsection

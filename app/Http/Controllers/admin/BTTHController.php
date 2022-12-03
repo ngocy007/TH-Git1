@@ -33,6 +33,10 @@ class BTTHController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+    public function phpsql(Request $request)
+    {
+        return view('BTTH.phpmysql');
+    }
     public function store(Request $request)
     {
         return view('BTTH.phpmysql');
@@ -91,9 +95,60 @@ class BTTHController extends Controller
     public function bai8pf(Request $request)
     {
         return view('BTTH.bai8.form');
-    }public function bai8pf1(Request $request)
+    }
+    public function bai8pf1(Request $request)
     {
         return view('BTTH.bai8.configpf');
+    }
+    public function pm2_1(Request $request)
+    {
+        return view('BTTH.2_1');
+    }public function pm2_2(Request $request)
+    {
+        return view('BTTH.2_2');
+    }public function pm2_3(Request $request)
+    {
+        return view('BTTH.2_3');
+    }public function pm2_4(Request $request)
+    {
+        return view('BTTH.2_4');
+    }public function pm2_5(Request $request)
+    {
+        return view('BTTH.2_5');
+    }public function pm2_6(Request $request)
+    {
+        return view('BTTH.2_6');
+    }public function pm2_71(Request $request)
+    {
+        return view('BTTH.2_7_1');
+    }public function pm2_72(Request $request)
+    {
+        return view('BTTH.2_7_2');
+    }public function pm2_8(Request $request)
+    {
+        return view('BTTH.2_8');
+    }public function pm2_9(Request $request)
+    {
+        return view('BTTH.2_9');
+    }public function pm2_10(Request $request)
+    {
+        return view('BTTH.2_10');
+    }public function pm2_11(Request $request)
+    {
+        return view('BTTH.2_11');
+    }public function pm2_121(Request $request)
+    {
+        return view('BTTH.2_12_1');
+    }public function pm2_122(Request $request)
+    {
+        return view('BTTH.2_12_2');
+    }
+    public function pm2_123(Request $request)
+    {
+        return view('BTTH.2_12_3');
+    }public function conect(Request $request)
+    {
+        return view('BTTH.conect');
     }
 
 

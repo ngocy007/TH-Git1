@@ -33,9 +33,9 @@ const submit = () => {
     <Head title="Log in" />
 
     <AuthenticationCard>
-        <template #logo>
-            <AuthenticationCardLogo />
-        </template>
+        <div align="center">
+            <a href="/" class="navbar-brand mr-4"><img src="https://metruyencv.com/assets/images/logo.png?81124" alt="" height="48"></a>
+        </div>
 
         <div v-if="status" class="mb-4 font-medium text-sm text-green-600">
             {{ status }}

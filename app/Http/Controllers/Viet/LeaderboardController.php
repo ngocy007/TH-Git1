@@ -16,7 +16,7 @@ class LeaderboardController extends Controller
      * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
      */
     public function index(Request $request)
-    {   // luot xem
+    {   
         $data = DB::table('Truyen')
             ->leftJoin('TheoDoi', 'Truyen.id', '=', 'TheoDoi.MaTruyen')
             ->select(DB::raw("Truyen.id,truyen.AnhDaiDien,truyen.TenTruyen,truyen.LuotXem,truyen.MoTa,truyen.TrangThai,count('MaNguoiDung') as theodoi"))
